@@ -10,7 +10,7 @@ import UIKit
 
 class SCOFood1: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
-    
+    //sss
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
