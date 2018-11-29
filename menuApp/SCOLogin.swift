@@ -8,14 +8,42 @@
 
 import UIKit
 import Firebase
+import AVFoundation
+
 
 class SCOLogin: UIViewController {
+    
+    var player: AVAudioPlayer?
+    @IBAction func calMusic(_ sender: Any) {
+        
+         guard let url = Bundle.main.url(forResource: "aaa", withExtension:"mp3") else { return }
+        do {
+            
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint:
+                AVFileType.mp3.rawValue)
+            
+            guard let player = player else { return }
+            player.play()
+            
+        }catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    
 
+    
+    
+    
     
     var ref: DatabaseReference!
     
     @IBAction func calCreat(_ sender: UIButton) {
-        Auth.auth().createUser(withEmail: "sc4112sc@gmail.com", password: "333333") { (user, error) in
+        Auth.auth().createUser(withEmail: "sc4112sc@gmail.com", password: "666666") { (user, error) in
             // ...
             print("creat")
         }
@@ -25,7 +53,7 @@ class SCOLogin: UIViewController {
         
 
         
-        Auth.auth().signIn(withEmail: "sc4112sc@gmail.com", password: "333333") { (user, error) in
+        Auth.auth().signIn(withEmail: "sc4112sc@gmail.com", password: "666666") { (user, error) in
             // ...
             
             print("login")
@@ -42,7 +70,7 @@ class SCOLogin: UIViewController {
                 
                 //self.ref.child("users").child(user.uid).setValue(["username2": "hello"])
                 
-                self.ref.child("users/\(user.uid)/username").setValue("scott")
+                self.ref.child("users/\(user.uid)/username").setValue("888scott")
                // self.ref.child("users/\(user.uid)/username1").setValue("peter")
                 // ...
             }

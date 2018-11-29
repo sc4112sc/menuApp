@@ -109,6 +109,10 @@ class ViewController: UIViewController {
          self.change1()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -119,6 +123,7 @@ class ViewController: UIViewController {
         
         mytimer.fire()
         
+       
     }
 
     override func didReceiveMemoryWarning() {

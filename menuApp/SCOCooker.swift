@@ -16,6 +16,7 @@ class SCOCustomCell: UITableViewCell{
     
     @IBOutlet weak var name1: UILabel!
     
+    @IBOutlet weak var phone1: UILabel!
 }
 
 
@@ -23,17 +24,28 @@ class SCOCustomCell: UITableViewCell{
 
 class SCOCooker: UIViewController,UITableViewDataSource,UIPickerViewDelegate {
     
- 
+    
+   
+    
 
+    var titals=""
+    
+    var phoneB=[String]()
+    var phoneG=[String]()
+    
+    var arysB=[String]()
+    var arysG=[String]()
+    
+    var imgsB=[UIImage]()
+    var imgsG=[UIImage]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "scouser") as! SCOUser
 
         if section==0{
-            return vc2.boyName.count
+            return arysB.count
         }else {
-            return vc2.girlName.count
+            return arysG.count
         }
     }
     
@@ -41,20 +53,21 @@ class SCOCooker: UIViewController,UITableViewDataSource,UIPickerViewDelegate {
         
                  let cell=tableView.dequeueReusableCell(withIdentifier: "Cell") as! SCOCustomCell
         
-        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "scouser") as! SCOUser
+     
 
         
         if indexPath.section==0{
             
-            cell.img1.image=vc2.boyImg[indexPath.row]
-            cell.name1.text=vc2.boyName[indexPath.row]
-            
+            cell.img1.image=imgsB[indexPath.row]
+            cell.name1.text=arysB[indexPath.row]
+            cell.phone1.text="聯絡電話 : "+phoneB[indexPath.row]
            
             
         }else {
             
-            cell.img1.image=vc2.girlImg[indexPath.row]
-            cell.name1.text=vc2.girlName[indexPath.row]
+            cell.img1.image=imgsG[indexPath.row]
+            cell.name1.text=arysG[indexPath.row]
+            cell.phone1.text="聯絡電話 : "+phoneG[indexPath.row]
             
          
             
@@ -68,7 +81,6 @@ class SCOCooker: UIViewController,UITableViewDataSource,UIPickerViewDelegate {
     }
     
 
-    
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -91,16 +103,24 @@ class SCOCooker: UIViewController,UITableViewDataSource,UIPickerViewDelegate {
     }
     
     
+    @IBAction func Home(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home") as! ViewController
+        
+        
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     
-        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "scouser") as! SCOUser
-
-        print(vc2.boyName)
+        self.navigationItem.title=titals
+        
+        
+//        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "scouser") as! SCOUser
+//
+//        print(vc2.boyName)
         // Do any additional setup after loading the view.
     }
 

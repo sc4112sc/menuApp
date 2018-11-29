@@ -20,10 +20,14 @@ class SCOMenuCell: UITableViewCell{
 
 class SCOAllMenu: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    var imgs:[UIImage]=[UIImage(named:"menu1.jpg")!,
-                            UIImage(named:"menu2.JPG")!,
-                            UIImage(named:"menu3.jpg")!,
-                            UIImage(named:"menu4.jpg")!]
+
+    
+   static var chooseCount=1
+    
+    var imgs:[UIImage]=[UIImage(named:"mu1.jpg")!,
+                            UIImage(named:"mu2.jpg")!,
+                            UIImage(named:"mu3.jpg")!,
+                            UIImage(named:"mu4.jpg")!]
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,16 +43,51 @@ class SCOAllMenu: UIViewController,UITableViewDataSource,UITableViewDelegate {
         
         return cell
     }
-    
+    var gomymu=0
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "food1") as! SCOFood1
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Food1") as! SCOFood1
+       
+        
+        if indexPath.row==0{
+            SCOAllMenu.chooseCount=1
+            show(vc, sender: self)
+        }else if indexPath.row==1{
+            SCOAllMenu.chooseCount=2
+            show(vc, sender: self)
+        }else if indexPath.row==2{
+            SCOAllMenu.chooseCount=3
+            show(vc, sender: self)
+        }else{
+            SCOAllMenu.chooseCount=4
+        }
+        
+        
+        
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+        
+        
+        // gomymu=indexPath.row
+        
+        
+       // performSegue(withIdentifier: "yourSegueIdentifer", sender: self)
     }
     
+    
+   // func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+       // if segue.identifier == "yourSegueIdentifer" {
+          //  if let nextVC = segue.destination as? SCOFinal {
+               // nextVC.mymu = sender as! Int
+           // }
+       // }
+   // }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
     }
 
