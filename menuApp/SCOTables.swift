@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class SCOTables: UIViewController,UITextFieldDelegate {
-
+//
     @IBOutlet weak var nameT: UITextField!
     @IBOutlet weak var phoneT: UITextField!
     @IBOutlet weak var tableLine: UISlider!
