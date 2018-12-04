@@ -2,7 +2,7 @@
 //  Food+CoreDataProperties.swift
 //  
 //
-//  Created by 李書賢 on 2018/11/28.
+//  Created by 李書賢 on 2018/12/2.
 //
 //
 
@@ -20,5 +20,11 @@ extension Food {
     @NSManaged public var food2: String?
     @NSManaged public var food3: String?
     @NSManaged public var food4: String?
+    @NSManaged public var name: String?
+    @NSManaged public var phone: String?
+    @NSManaged public var table: String?
+    @NSManaged public var local: String?
+    @NSManaged public var menu: String?
+    @NSManaged public var many: Int16
 
 }

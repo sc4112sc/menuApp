@@ -5,8 +5,14 @@
         <attribute name="food2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="food3" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="food4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="local" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="many" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="menu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="table" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Food" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Food" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>
 </model>

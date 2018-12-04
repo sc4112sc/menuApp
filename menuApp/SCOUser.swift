@@ -13,47 +13,10 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     var locations : [String] = ["北部","中部","南部","東部"]
     var myTile=""
     
-    var boyName1:[String]=["小明","小智","老王","志明"]
-    var boyName2:[String]=["大雄","胖虎","小夫"]
-    var boyName3:[String]=["小黑","小白","小黃"]
-    var boyName4:[String]=["哈特利","獅子丸"]
+
+    @IBOutlet weak var remind: UILabel!
     
-    var boyImg1:[UIImage]=[UIImage(named:"b1.jpg")!,
-                           UIImage(named:"b2.jpg")!,
-                           UIImage(named:"b3.jpg")!,
-                           UIImage(named:"b4.jpg")!]
-    
-    var boyImg2:[UIImage]=[UIImage(named:"bnew5.jpg")!,
-                           UIImage(named:"b6.jpg")!,
-                           UIImage(named:"b7.jpg")!]
-    
-    var boyImg3:[UIImage]=[UIImage(named:"b8.jpg")!,
-                           UIImage(named:"b9.jpg")!,
-                           UIImage(named:"b10.jpg")!]
-    
-    var boyImg4:[UIImage]=[UIImage(named:"b11.jpg")!,
-                           UIImage(named:"b12.jpeg")!]
-    
-    var girlName1:[String]=["小美","小愛","小盈"]
-    var girlName2:[String]=["阿娟","露露","小喬"]
-    var girlName3:[String]=["大喬","小萱"]
-    var girlName4:[String]=["蓁蓁","小珊","婷婷","春嬌"]
-    
-    var girlImg1:[UIImage]=[UIImage(named:"g1.jpg")!,
-                           UIImage(named:"g2.jpg")!,
-                           UIImage(named:"g3.jpg")!]
-    
-    var girlImg2:[UIImage]=[UIImage(named:"g4.jpg")!,
-                            UIImage(named:"g5.jpg")!,
-                            UIImage(named:"g6.jpg")!]
-    
-    var girlImg3:[UIImage]=[UIImage(named:"g7.jpg")!,
-                            UIImage(named:"g8.jpg")!]
-    
-    var girlImg4:[UIImage]=[UIImage(named:"g9.jpg")!,
-                            UIImage(named:"g10.jpg")!,
-                            UIImage(named:"g11.jpeg")!,
-                            UIImage(named:"g12.png")!]
+
     
     var boyName:[String]=[]
     var girlName:[String]=[]
@@ -64,16 +27,8 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     var boyPhone:[String]=[]
     var girlPhone:[String]=[]
     
-    var boyPhone1:[String]=["0912345678","0987654321","0944773321","0988456725"]
-    var boyPhone2:[String]=["0922234128","0976558451","0999876122"]
-    var boyPhone3:[String]=["0934565834","0956767563","0996786053"]
-    var boyPhone4:[String]=["0970789465","0907905673"]
-    
-     var girlPhone1:[String]=["0954906945","0954608549","0943294023"]
-     var girlPhone2:[String]=["0934565434","0912141467","0966352112"]
-     var girlPhone3:[String]=["0954665067","0964565400"]
-     var girlPhone4:[String]=["0964535841","0902935039","0953453401","0954334209"]
-    
+    var boyYear:[String]=[]
+    var girlYear:[String]=[]
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return locations[row]
@@ -83,14 +38,21 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
         var pickerLabel: UILabel? = (view as? UILabel)
         if pickerLabel == nil {
             pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: "<Your Font Name>", size: 22)
+            pickerLabel?.font = UIFont(name: "<Your Font Name>", size: 20)
             pickerLabel?.textAlignment = .center
         }
         pickerLabel?.text = locations[row]
-        pickerLabel?.textColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+        pickerLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         pickerLabel?.font = UIFont (name: "Helvetica Neue", size: 22)
+        
+        pickerLabel?.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        
         //pickerLabel?.backgroundColor = UIColor.orange
         return pickerLabel!
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 50
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -105,53 +67,81 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
        
         
         if locations[row]==locations[0] {
-           boyName=boyName1
-           boyImg=boyImg1
+           boyName=["小明","小智","老王","志明"]
+            boyImg=[UIImage(named:"b1.jpg")!,
+                    UIImage(named:"b2.jpg")!,
+                    UIImage(named:"b3.jpg")!,
+                    UIImage(named:"b4.jpg")!]
             
-           girlName=girlName1
-           girlImg=girlImg1
+           girlName=["小美","小愛","小盈"]
+            girlImg=[UIImage(named:"g1.jpg")!,
+                     UIImage(named:"g2.jpg")!,
+                     UIImage(named:"g3.jpg")!]
             
-           boyPhone=boyPhone1
-           girlPhone=girlPhone1
+           boyPhone=["0912345678","0987654321","0944773321","0988456725"]
+           girlPhone=["0954906945","0954608549","0943294023"]
+            
+            boyYear=["擁有15年經歷，拿手菜：佛跳牆","擁有20年經歷，拿手菜：紅燒魚翅羹","擁有8年經歷，拿手菜：紅蟳米糕","擁有10年經歷，拿手菜：六色拼盤"]
+            girlYear=["擁有6年經歷，拿手菜：川燙活蝦","擁有13年經歷，拿手菜：花跳魚湯","擁有25年經歷，拿手菜：清蒸石斑"]
             
            myTile="北部"
             
             print(boyName)
         }else if locations[row]==locations[1] {
-            boyName=boyName2
-            boyImg=boyImg2
+            boyName=["大雄","胖虎","小夫"]
+            boyImg=[UIImage(named:"bnew5.jpg")!,
+                    UIImage(named:"b6.jpg")!,
+                    UIImage(named:"b7.jpg")!]
             
-            girlName=girlName2
-            girlImg=girlImg2
+            girlName=["阿娟","露露","小喬"]
+            girlImg=[UIImage(named:"g4.jpg")!,
+                     UIImage(named:"g5.jpg")!,
+                     UIImage(named:"g6.jpg")!]
             
-            boyPhone=boyPhone2
-            girlPhone=girlPhone2
+            boyPhone=["0922234128","0976558451","0999876122"]
+            girlPhone=["0934565434","0912141467","0966352112"]
+            
+            boyYear=["擁有35年經歷，拿手菜：紅燒鮑魚","擁有21年經歷，拿手菜：紅燒魚翅羹","擁有7年經歷，拿手菜：生炒干貝"]
+            girlYear=["擁有16年經歷，拿手菜：鳳梨蝦球","擁有10年經歷，拿手菜：花跳魚湯","擁有22年經歷，拿手菜：生魚片"]
             
             myTile="中部"
             
             print(boyName)
         }else if locations[row]==locations[2] {
-            boyName=boyName3
-            boyImg=boyImg3
+            boyName=["小黑","小白","小黃"]
+            boyImg=[UIImage(named:"b8.jpg")!,
+                    UIImage(named:"b9.jpg")!,
+                    UIImage(named:"b10.jpg")!]
             
-            girlName=girlName3
-            girlImg=girlImg3
+            girlName=["大喬","小萱"]
+            girlImg=[UIImage(named:"g7.jpg")!,
+                     UIImage(named:"g8.jpg")!]
             
-            boyPhone=boyPhone3
-            girlPhone=girlPhone3
+            boyPhone=["0934565834","0956767563","0996786053"]
+            girlPhone=["0954665067","0964565400"]
+            
+            boyYear=["擁有30年經歷，拿手菜：八寶丸","擁有5年經歷，拿手菜：將絲炒大腸","擁有14年經歷，拿手菜：龍江脆皮雞"]
+            girlYear=["擁有11年經歷，拿手菜：法式焗鮮蝦","擁有16年經歷，拿手菜：金沙豆腐"]
             
             myTile="南部"
             
             print(boyName)
         }else if locations[row]==locations[3] {
-            boyName=boyName4
-            boyImg=boyImg4
+            boyName=["哈特利","獅子丸"]
+            boyImg=[UIImage(named:"b11.jpg")!,
+                    UIImage(named:"b12.jpeg")!]
             
-            girlName=girlName4
-            girlImg=girlImg4
+            girlName=["蓁蓁","小珊","婷婷","春嬌"]
+            girlImg=[UIImage(named:"g9.jpg")!,
+                     UIImage(named:"g10.jpg")!,
+                     UIImage(named:"g11.jpeg")!,
+                     UIImage(named:"g12.png")!]
             
-            boyPhone=boyPhone4
-            girlPhone=girlPhone4
+            boyPhone=["0970789465","0907905673"]
+            girlPhone=["0964535841","0902935039","0953453401","0954334209"]
+            
+            boyYear=["擁有9年經歷，拿手菜：龍蝦三明治","擁有19年經歷，拿手菜：紅燒魚翅羹"]
+            girlYear=["擁有26年經歷，拿手菜：鮑魚燴花菇","擁有17年經歷，拿手菜：花跳魚湯","擁有20年經歷，拿手菜：生魚片","擁有13年經歷，拿手菜：清蒸海上鮮"]
             
             myTile="東部"
             
@@ -165,6 +155,16 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     
     @IBOutlet weak var mySW: UISwitch!
     @IBAction func calMySW(_ sender: UISwitch) {
+        
+        if sender.isOn == true{
+            UIView.animate(withDuration: 1) {
+                self.remind.frame.origin.x = 0
+           }
+        }else{
+            UIView.animate(withDuration: 1) {
+                self.remind.frame.origin.x = 380
+            }
+        }
     }
     
     @IBOutlet weak var mySeg: UISegmentedControl!
@@ -190,6 +190,9 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
         vc.phoneB=boyPhone
         vc.phoneG=girlPhone
         
+        vc.yearB=boyYear
+        vc.yearG=girlYear
+        
        self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -199,14 +202,22 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
 
         searchBtn.layer.cornerRadius = 30
         
-        boyName=boyName1
-        boyImg=boyImg1
+        boyName=["小明","小智","老王","志明"]
+        boyImg=[UIImage(named:"b1.jpg")!,
+                UIImage(named:"b2.jpg")!,
+                UIImage(named:"b3.jpg")!,
+                UIImage(named:"b4.jpg")!]
         
-        girlName=girlName1
-        girlImg=girlImg1
+        girlName=["小美","小愛","小盈"]
+        girlImg=[UIImage(named:"g1.jpg")!,
+                 UIImage(named:"g2.jpg")!,
+                 UIImage(named:"g3.jpg")!]
         
-        boyPhone=boyPhone1
-        girlPhone=girlPhone1
+        boyPhone=["0912345678","0987654321","0944773321","0988456725"]
+        girlPhone=["0954906945","0954608549","0943294023"]
+        
+        boyYear=["擁有15年經歷，拿手菜：佛跳牆","擁有20年經歷，拿手菜：紅燒魚翅羹","擁有8年經歷，拿手菜：紅蟳米糕","擁有10年經歷，拿手菜：六色拼盤"]
+        girlYear=["擁有6年經歷，拿手菜：川燙活蝦","擁有13年經歷，拿手菜：花跳魚湯","擁有25年經歷，拿手菜：清蒸石斑"]
         
         myTile="北部"
         // Do any additional setup after loading the view.

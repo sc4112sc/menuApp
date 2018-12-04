@@ -17,15 +17,17 @@ class SCOFood4: UIViewController,UITableViewDelegate,UITableViewDataSource,UIAle
         
    
     static var food4A = [String]()
-    
+    static var food4Img = [UIImage]()
+    static var money4A = [String]()
 
     @IBOutlet weak var table: UITableView!
     
-
+    @IBOutlet weak var titleC: UILabel!
+    
     
    
     
-    var money=["預估價值為800","預估價值為1000","預估價值為500","預估價值為300","預估價值為600"]
+    var money=["預估價為$800","預估價為$1000","預估價為$500","預估價為$300","預估價為$600"]
    
     
     var arys=["伊雷特布丁","哈根達斯","時鮮水果盤","漢堡冰","鴛鴦紅豆糕"]
@@ -76,6 +78,10 @@ class SCOFood4: UIViewController,UITableViewDelegate,UITableViewDataSource,UIAle
             
             SCOFood4.food4A.append((oneCell.textLabel?.text)!)
             
+            SCOFood4.food4Img.append((oneCell.imageView?.image)!)
+            
+            SCOFood4.money4A.append((oneCell.detailTextLabel?.text)!)
+            
         } else {
             oneCell.accessoryType = UITableViewCellAccessoryType.none
             
@@ -83,6 +89,14 @@ class SCOFood4: UIViewController,UITableViewDelegate,UITableViewDataSource,UIAle
             
             if let index = SCOFood4.food4A.index(of: (oneCell.textLabel?.text)!) {
                 SCOFood4.food4A.remove(at: index)
+            }
+            
+            if let index = SCOFood4.food4Img.index(of: (oneCell.imageView?.image)!) {
+                SCOFood4.food4Img.remove(at: index)
+            }
+            
+            if let index = SCOFood4.money4A.index(of: (oneCell.detailTextLabel?.text)!) {
+                SCOFood4.money4A.remove(at: index)
             }
             
         }
@@ -188,13 +202,29 @@ class SCOFood4: UIViewController,UITableViewDelegate,UITableViewDataSource,UIAle
         
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 1) {
+            self.titleC.frame.origin.x = 0
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         SCOFood4.count4 = 0
         SCOFood4.food4A = []
+        SCOFood4.food4Img = []
+        SCOFood4.money4A = []
+        
+        switch SCOAllMenu.chooseCount {
+        case 1:
+            titleC.text = "可選一項"
+        case 2:
+            titleC.text = "可選二項"
+        default:
+            titleC.text = "可選一項"
+        }
         //table.contentInset = UIEdgeInsetsMake(-50, 0, 0, 0)
         // Do any additional setup after loading the view.
     }

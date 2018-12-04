@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class SCOFinal: UIViewController,UITableViewDataSource, UITableViewDelegate  {
+    
+    //CoreData
+    var context:NSManagedObjectContext!
+    let appDel = UIApplication.shared.delegate as! AppDelegate
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
@@ -59,6 +65,7 @@ class SCOFinal: UIViewController,UITableViewDataSource, UITableViewDelegate  {
     var name2=""
     var local2=""
     var table2=""
+    var many2:Int16=0
 
     @IBAction func menuDetail(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "finalMenu")as! FinalMenu
@@ -70,6 +77,13 @@ class SCOFinal: UIViewController,UITableViewDataSource, UITableViewDelegate  {
     @IBOutlet weak var cancelBtn: UIButton!
     
     @IBAction func calCancell(_ sender: Any) {
+        
+        let fetchRepuest:NSFetchRequest<Food>=Food.fetchRequest()
+        let predicate=NSPredicate(format: "many = '\(many2)'")
+        fetchRepuest.predicate=predicate
+        let allItems = try! context.fetch(fetchRepuest)
+        context.delete(allItems[0])
+        appDel.saveContext()
         
         var alertController = UIAlertController(title: "訂單取消", message:"已經幫您取消訂單",preferredStyle: UIAlertControllerStyle.alert)
         
@@ -105,6 +119,11 @@ class SCOFinal: UIViewController,UITableViewDataSource, UITableViewDelegate  {
         cancelBtn.layer.cornerRadius=15
         
         menuImg.image=UIImage(named: imgs[SCOAllMenu.chooseCount-1])
+        
+        //CoreData
+        
+        context = appDel.persistentContainer.viewContext
+        
         
         // Do any additional setup after loading the view.
     }

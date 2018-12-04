@@ -8,10 +8,21 @@
 
 import UIKit
 
+protocol ExCellDelegate: class {
+    func didTap(cell: SCOCustomCell)
+}
+
 class SCOCustomCell: UITableViewCell{
     
+    @IBAction func calD(_ sender: Any) {
+        
+      cellDelegate?.didTap(cell: self)
+    }
     
-
+    weak var cellDelegate: ExCellDelegate?
+    
+    @IBOutlet weak var btn1: UIButton!
+    
     @IBOutlet weak var img1: UIImageView!
     
     @IBOutlet weak var name1: UILabel!
@@ -22,13 +33,16 @@ class SCOCustomCell: UITableViewCell{
 
 
 
-class SCOCooker: UIViewController,UITableViewDataSource,UIPickerViewDelegate {
+class SCOCooker: UIViewController,UITableViewDataSource,UITableViewDelegate,ExCellDelegate {
     
     
    
     
 
     var titals=""
+    
+    var yearB=[String]()
+    var yearG=[String]()
     
     var phoneB=[String]()
     var phoneG=[String]()
@@ -53,7 +67,7 @@ class SCOCooker: UIViewController,UITableViewDataSource,UIPickerViewDelegate {
         
                  let cell=tableView.dequeueReusableCell(withIdentifier: "Cell") as! SCOCustomCell
         
-     
+        cell.cellDelegate = self
 
         
         if indexPath.section==0{
@@ -75,6 +89,37 @@ class SCOCooker: UIViewController,UITableViewDataSource,UIPickerViewDelegate {
         return cell
     }
     
+    func didTap(cell: SCOCustomCell){
+        if let indexPath = myTV.indexPath(for: cell){
+            
+                    let secVC=storyboard?.instantiateViewController(withIdentifier: "Call") as! CallViewController
+                    secVC.localC = titals
+            
+                    if indexPath.section==0{
+            
+                        secVC.nameC = arysB[indexPath.row]
+                        secVC.phoneC = phoneB[indexPath.row]
+                        secVC.imgC = imgsB[indexPath.row]
+                        secVC.yearC = yearB[indexPath.row]
+            
+                    }else{
+            
+                        secVC.nameC = arysG[indexPath.row]
+                        secVC.phoneC = phoneG[indexPath.row]
+                        secVC.imgC = imgsG[indexPath.row]
+                        secVC.yearC = yearG[indexPath.row]
+            
+                    }
+            
+            
+            
+                    show(secVC, sender: self)
+            
+            
+            
+        }
+    }
+    
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -82,25 +127,55 @@ class SCOCooker: UIViewController,UITableViewDataSource,UIPickerViewDelegate {
     
 
     
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section==0{
-            return "Boy"
-        }else {
-            return "Girl"
-        }
-    }
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        if section==0{
-            return "Boy"
-        }else {
-            return "Girl"
-        }
-    }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerText = UILabel()
+    
+        headerText.backgroundColor=#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        headerText.textAlignment = .center
+        headerText.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        if section==0{
+            headerText.text = "男生"
+        }else {
+            headerText.text = "女生"
+        }
+        
+        return headerText
+    }
+    
+//    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+//        let secVC=storyboard?.instantiateViewController(withIdentifier: "Call") as! CallViewController
+//        secVC.localC = titals
+//
+//        if indexPath.section==0{
+//
+//            secVC.nameC = arysB[indexPath.row]
+//            secVC.phoneC = phoneB[indexPath.row]
+//            secVC.imgC = imgsB[indexPath.row]
+//
+//        }else{
+//
+//            secVC.nameC = arysG[indexPath.row]
+//            secVC.phoneC = phoneG[indexPath.row]
+//            secVC.imgC = imgsG[indexPath.row]
+//
+//        }
+//
+//
+//
+//        show(secVC, sender: self)
+//    }
+    
+
     
     
     @IBAction func Home(_ sender: Any) {
@@ -111,6 +186,7 @@ class SCOCooker: UIViewController,UITableViewDataSource,UIPickerViewDelegate {
     }
     
     
+    @IBOutlet weak var myTV: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

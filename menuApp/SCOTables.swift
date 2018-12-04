@@ -20,10 +20,16 @@ class SCOTables: UIViewController,UITextFieldDelegate {
     var context:NSManagedObjectContext!
     let appDel = UIApplication.shared.delegate as! AppDelegate
     
+    var many1:Int16=0
     var phone1=""
     var name1=""
-    var local1=""
-    var table1=""
+    var local1="北部"
+    var table1="1"
+    var menu1=""
+    var allFood1=""
+    var allFood2=""
+    var allFood3=""
+    var allFood4=""
  
     @IBAction func seg1(_ sender: UISegmentedControl) {
         local1=sender.titleForSegment(at: sender.selectedSegmentIndex)!
@@ -56,13 +62,27 @@ class SCOTables: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        nameT.delegate=self
-        phoneT.delegate=self
+        nameT.delegate = self
+        phoneT.delegate = self
         
        
         //CoreData
         
-        context=appDel.persistentContainer.viewContext
+        context = appDel.persistentContainer.viewContext
+        
+        
+        for i in SCOFood1.food1A{
+            allFood1 = allFood1 + i + " "
+        }
+        for i in SCOFood2.food2A{
+            allFood2 = allFood2 + i + " "
+        }
+        for i in SCOFood3.food3A{
+            allFood3 = allFood3 + i + " "
+        }
+        for i in SCOFood4.food4A{
+            allFood4 = allFood4 + i + " "
+        }
         
         
         // Do any additional setup after loading the view.
@@ -98,15 +118,57 @@ class SCOTables: UIViewController,UITextFieldDelegate {
         name1=nameT.text!
         phone1=phoneT.text!
         
+        switch SCOAllMenu.chooseCount {
+        case 1:
+            menu1 = "一般方案"
+        case 2:
+            menu1 = "尊貴方案"
+        case 3:
+            menu1 = "小資方案"
+        default:
+            menu1 = "經典方案"
+            
+        }
         
         if phoneIsValid == true && nameT.text != ""{
+            
+            many1 = Int16(arc4random_uniform(10000))+Int16(table1)!
+            
+            //CoreData取得表單列表
+            let user = NSEntityDescription.insertNewObject(forEntityName: "Food", into: context) as! Food
+            //CoreData寫入資料並儲存
+            user.name = name1
+            user.phone = phone1
+            user.local = local1
+            user.menu = menu1
+            user.table = table1
+            user.many = many1
+            
+            user.food1 = allFood1
+            user.food2 = allFood2
+            user.food3 = allFood3
+            user.food4 = allFood4
+            
+            
+            appDel.saveContext()
+            
+            
+            
+            //
+            
+            
+            
+            
+            
+            
+            
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "Final") as! SCOFinal
             
-            vc.name2=name1
-            vc.phone2=phone1
-            vc.table2=table1
-            vc.local2=local1
-            
+            vc.name2 = name1
+            vc.phone2 = phone1
+            vc.table2 = table1
+            vc.local2 = local1
+            vc.many2 = many1
             
             show(vc, sender: self)
             

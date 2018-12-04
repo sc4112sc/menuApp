@@ -10,9 +10,15 @@ import UIKit
 
 class SCOFood3: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var titleC: UILabel!
     @IBOutlet weak var table: UITableView!
     static var count3=0
     static var food3A = [String]()
+    static var food3Img = [UIImage]()
+    static var money3A = [String]()
+    
+    
+    
     var arys=["佛跳牆","烏骨雞湯","翡翠羹","魚翅羹"]
     
     var foodImg:[UIImage]=[UIImage(named:"r1.jpg")!,
@@ -20,7 +26,7 @@ class SCOFood3: UIViewController,UITableViewDelegate,UITableViewDataSource {
                            UIImage(named:"r3.jpg")!,
                            UIImage(named:"r4.jpg")!]
     
-    var money=["預估價值為800","預估價值為1000","預估價值為500","預估價值為300"]
+    var money=["預估價為$800","預估價為$1000","預估價為$500","預估價為$300"]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
@@ -60,6 +66,10 @@ class SCOFood3: UIViewController,UITableViewDelegate,UITableViewDataSource {
            
             SCOFood3.food3A.append((oneCell.textLabel?.text)!)
             
+            SCOFood3.food3Img.append((oneCell.imageView?.image)!)
+            
+            SCOFood3.money3A.append((oneCell.detailTextLabel?.text)!)
+            
         } else {
             oneCell.accessoryType = UITableViewCellAccessoryType.none
             
@@ -68,6 +78,15 @@ class SCOFood3: UIViewController,UITableViewDelegate,UITableViewDataSource {
             if let index = SCOFood3.food3A.index(of: (oneCell.textLabel?.text)!) {
                 SCOFood3.food3A.remove(at: index)
             }
+            
+            if let index = SCOFood3.food3Img.index(of: (oneCell.imageView?.image)!) {
+                SCOFood3.food3Img.remove(at: index)
+            }
+            
+            if let index = SCOFood3.money3A.index(of: (oneCell.detailTextLabel?.text)!) {
+                SCOFood3.money3A.remove(at: index)
+            }
+            
         }
         //取消選取
         tableView.deselectRow(at: indexPath, animated: true)
@@ -137,12 +156,30 @@ class SCOFood3: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 1) {
+            self.titleC.frame.origin.x = 0
+            
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         SCOFood3.count3 = 0
         SCOFood3.food3A = []
+        SCOFood3.food3Img = []
+        SCOFood3.money3A = []
+        
+        switch SCOAllMenu.chooseCount {
+        case 1:
+            titleC.text = "可選二項"
+        case 2:
+            titleC.text = "可選二項"
+        default:
+            titleC.text = "可選一項"
+        }
         //table.contentInset = UIEdgeInsetsMake(-50, 0, 0, 0)
         // Do any additional setup after loading the view.
     }

@@ -13,14 +13,18 @@ class SCOFood1: UIViewController,UITableViewDataSource, UITableViewDelegate {
 
    
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var titleC: UILabel!
+    
     
     static var food1A = [String]()
+    static var food1Img = [UIImage]()
+    static var money1A = [String]()
     
     static var count1=0
     //sss
     var arys=["五福臨門大拼盤","烏魚子拼盤","生菜蝦鬆","花生炸湯圓","龍蝦沙拉"]
     
-    var money=["預估價值為800","預估價值為1000","預估價值為500","預估價值為300","預估價值為600"]
+    var money=["預估價為$800","預估價為$1000","預估價為$500","預估價為$300","預估價為$600"]
     
     var foodImg:[UIImage]=[UIImage(named:"bb1.jpg")!,
                            UIImage(named:"bb2.jpg")!,
@@ -64,7 +68,9 @@ class SCOFood1: UIViewController,UITableViewDataSource, UITableViewDelegate {
             SCOFood1.count1 = SCOFood1.count1 + 1
             SCOFood1.food1A.append((oneCell.textLabel?.text)!)
             
+        SCOFood1.food1Img.append((oneCell.imageView?.image)!)
             
+            SCOFood1.money1A.append((oneCell.detailTextLabel?.text)!)
             
         } else {
             oneCell.accessoryType = UITableViewCellAccessoryType.none
@@ -72,6 +78,14 @@ class SCOFood1: UIViewController,UITableViewDataSource, UITableViewDelegate {
             
             if let index = SCOFood1.food1A.index(of: (oneCell.textLabel?.text)!) {
                 SCOFood1.food1A.remove(at: index)
+            }
+            
+            if let index = SCOFood1.food1Img.index(of: (oneCell.imageView?.image)!) {
+                SCOFood1.food1Img.remove(at: index)
+            }
+            
+            if let index = SCOFood1.money1A.index(of: (oneCell.detailTextLabel?.text)!) {
+                SCOFood1.money1A.remove(at: index)
             }
             
         }
@@ -170,7 +184,12 @@ class SCOFood1: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
  
     
- 
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 1) {
+            self.titleC.frame.origin.x = 0
+            
+        }
+    }
     
    
     
@@ -180,6 +199,19 @@ class SCOFood1: UIViewController,UITableViewDataSource, UITableViewDelegate {
         
         SCOFood1.count1=0
         SCOFood1.food1A=[]
+        SCOFood1.food1Img=[]
+        SCOFood1.money1A=[]
+        
+        switch SCOAllMenu.chooseCount {
+        case 1:
+            titleC.text = "可選一項"
+        case 2:
+            titleC.text = "可選兩項"
+        default:
+            titleC.text = "可選一項"
+        }
+        
+        
         
         //table.contentInset = UIEdgeInsetsMake(-50, 0, 0, 0)
         
