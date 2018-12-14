@@ -26,10 +26,14 @@ class SCOTables: UIViewController,UITextFieldDelegate {
     var local1="北部"
     var table1="1"
     var menu1=""
+    
+    
     var allFood1=""
     var allFood2=""
     var allFood3=""
     var allFood4=""
+    
+
  
     @IBAction func seg1(_ sender: UISegmentedControl) {
         local1=sender.titleForSegment(at: sender.selectedSegmentIndex)!
@@ -70,20 +74,30 @@ class SCOTables: UIViewController,UITextFieldDelegate {
         
         context = appDel.persistentContainer.viewContext
         
+        if SCOAllMenu.chooseCount == 4{
+    
+            allFood1 = "五福臨門大拼盤 烏魚子拼盤"
+            allFood2 = "八寶丸 櫻花蝦米糕 法式焗烤蝦 清蒸海上鮮 綜合生魚片"
+            allFood3 = "翡翠羹 魚翅羹"
+            allFood4 = "時鮮水果盤"
+            
         
-        for i in SCOFood1.food1A{
-            allFood1 = allFood1 + i + " "
+        }else{
+            
+            for i in SCOFood1.food1A{
+                allFood1 = allFood1 + i + " "
+            }
+            for i in SCOFood2.food2A{
+                allFood2 = allFood2 + i + " "
+            }
+            for i in SCOFood3.food3A{
+                allFood3 = allFood3 + i + " "
+            }
+            for i in SCOFood4.food4A{
+                allFood4 = allFood4 + i + " "
+            }
+            
         }
-        for i in SCOFood2.food2A{
-            allFood2 = allFood2 + i + " "
-        }
-        for i in SCOFood3.food3A{
-            allFood3 = allFood3 + i + " "
-        }
-        for i in SCOFood4.food4A{
-            allFood4 = allFood4 + i + " "
-        }
-        
         
         // Do any additional setup after loading the view.
     }
@@ -95,6 +109,8 @@ class SCOTables: UIViewController,UITextFieldDelegate {
     
     //var nameIsValid=false
     var phoneIsValid=false
+    
+    
     
     @IBAction func calGo(_ sender: Any) {
         
@@ -140,7 +156,7 @@ class SCOTables: UIViewController,UITextFieldDelegate {
             user.name = name1
             user.phone = phone1
             user.local = local1
-            user.menu = menu1
+            user.menu = Int16(SCOAllMenu.chooseCount) 
             user.table = table1
             user.many = many1
             
@@ -158,7 +174,7 @@ class SCOTables: UIViewController,UITextFieldDelegate {
             
             
             
-            
+
             
             
             

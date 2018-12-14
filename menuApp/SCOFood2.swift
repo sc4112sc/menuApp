@@ -175,6 +175,8 @@ class SCOFood2: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.rightBarButtonItem?.image = UIImage(named: "forward")
+        
         SCOFood2.count2=0
         SCOFood2.food2A=[]
         SCOFood2.food2Img=[]

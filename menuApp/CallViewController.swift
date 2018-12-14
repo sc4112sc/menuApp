@@ -39,7 +39,23 @@ class CallViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
 
     @IBAction func calMessage(_ sender: Any) {
-        
+        if CreatUser.isLogin == true{
+            
+             let vc = self.storyboard?.instantiateViewController(withIdentifier: "myChat") as! MyChat
+            vc.masterName = nameC
+            show(vc, sender: self)
+            
+        }else{
+            
+            let alertController = UIAlertController(title: "請先登入", message: "前往登入頁面", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "確定", style: .cancel) { (UIAlertAction) in
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "creatUser") as! CreatUser
+                self.present(vc, animated: true, completion: nil)
+            }
+            alertController.addAction(ok)
+            present(alertController, animated: true, completion: nil)
+            
+        }
     }
     
     @IBAction func calCall(_ sender: Any) {
@@ -68,7 +84,7 @@ class CallViewController: UIViewController,UITableViewDataSource,UITableViewDele
         // Do any additional setup after loading the view.
     }
     
-
+  
     /*
     // MARK: - Navigation
 

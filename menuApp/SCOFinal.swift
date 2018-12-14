@@ -17,13 +17,13 @@ class SCOFinal: UIViewController,UITableViewDataSource, UITableViewDelegate  {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var titleA=["姓名","電話","地區","桌數"]
-        var detailA=[name2,phone2,local2,table2]
+        var titleA=["姓名","電話","地區","桌數","訂單編號"]
+        var detailA=[name2,phone2,local2,table2,many2T]
         
         let cell=tableView.dequeueReusableCell(withIdentifier: "cell1")!
         
@@ -31,6 +31,9 @@ class SCOFinal: UIViewController,UITableViewDataSource, UITableViewDelegate  {
     
         cell.detailTextLabel?.text=detailA[indexPath.row]
         if indexPath.row==1{
+            cell.detailTextLabel?.textColor=#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            
+        }else if indexPath.row==4{
             cell.detailTextLabel?.textColor=#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         }else{
             cell.detailTextLabel?.textColor=#colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
@@ -46,7 +49,7 @@ class SCOFinal: UIViewController,UITableViewDataSource, UITableViewDelegate  {
   
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 42
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -55,7 +58,7 @@ class SCOFinal: UIViewController,UITableViewDataSource, UITableViewDelegate  {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerText = UILabel()
-        headerText.text="訂單受理成功"
+        headerText.text="訂單送出成功"
         headerText.backgroundColor=#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         headerText.textAlignment = .center
         return headerText
@@ -66,11 +69,27 @@ class SCOFinal: UIViewController,UITableViewDataSource, UITableViewDelegate  {
     var local2=""
     var table2=""
     var many2:Int16=0
+    
+    var many2T=""
 
     @IBAction func menuDetail(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "finalMenu")as! FinalMenu
         
-        show(vc, sender: self)
+        
+        if SCOAllMenu.chooseCount == 4{
+            
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "menu4D")as! Menu4DViewController
+            
+            show(vc, sender: self)
+            
+        }else{
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "finalMenu")as! FinalMenu
+            
+            show(vc, sender: self)
+            
+        }
+
     }
     
     
@@ -124,7 +143,7 @@ class SCOFinal: UIViewController,UITableViewDataSource, UITableViewDelegate  {
         
         context = appDel.persistentContainer.viewContext
         
-        
+        many2T = String(many2)
         // Do any additional setup after loading the view.
     }
 

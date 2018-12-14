@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 
-class UserLogin: UIViewController {
+class UserLogin: UIViewController,UITextFieldDelegate{
 
     @IBOutlet weak var input1: UITextField!
     @IBOutlet weak var input2: UITextField!
@@ -50,6 +50,8 @@ class UserLogin: UIViewController {
                 
                 self.ref.child("users/\(user.uid)/count").setValue(text1)
    
+            }else{
+                print("nonononono")
             }
         }
         
@@ -58,6 +60,9 @@ class UserLogin: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
+        
+        input1.delegate = self
+        input2.delegate = self
         // Do any additional setup after loading the view.
     }
 

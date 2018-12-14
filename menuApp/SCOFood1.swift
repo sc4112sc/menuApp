@@ -20,6 +20,7 @@ class SCOFood1: UIViewController,UITableViewDataSource, UITableViewDelegate {
     static var food1Img = [UIImage]()
     static var money1A = [String]()
     
+    
     static var count1=0
     //sss
     var arys=["五福臨門大拼盤","烏魚子拼盤","生菜蝦鬆","花生炸湯圓","龍蝦沙拉"]
@@ -31,6 +32,8 @@ class SCOFood1: UIViewController,UITableViewDataSource, UITableViewDelegate {
                            UIImage(named:"bb3.jpg")!,
                            UIImage(named:"bb4.jpg")!,
                            UIImage(named:"bb5.jpg")!]
+    
+  
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
@@ -195,12 +198,13 @@ class SCOFood1: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.rightBarButtonItem?.image = UIImage(named: "forward")
         
         SCOFood1.count1=0
         SCOFood1.food1A=[]
         SCOFood1.food1Img=[]
         SCOFood1.money1A=[]
+        
         
         switch SCOAllMenu.chooseCount {
         case 1:

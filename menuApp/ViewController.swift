@@ -8,10 +8,41 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+
+
+
+class ViewController: UIViewController,UIPopoverPresentationControllerDelegate{
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var popoverCtrl = segue.destination.popoverPresentationController
+        
+        if sender is UIButton {
+            popoverCtrl?.sourceRect = (sender as! UIButton).bounds
+        }
+        else if sender is UIBarButtonItem{
+            popoverCtrl?.barButtonItem = sender as? UIBarButtonItem
+        }
+        popoverCtrl?.delegate = self
+    }
+    
+    @IBOutlet weak var popBtn: UIBarButtonItem!
+   
+    
+    
+    @IBAction func calPop(_ sender: Any) {
+        
+
+
+
+        
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
 
     
- 
     @IBAction func btn1(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "scouser") as! SCOUser
         self.navigationController?.pushViewController(vc, animated: true)
@@ -123,7 +154,8 @@ class ViewController: UIViewController {
         
         mytimer.fire()
         
-       
+        self.navigationItem.leftBarButtonItem?.image = UIImage(named: "orderAll")
+        
     }
 
     override func didReceiveMemoryWarning() {

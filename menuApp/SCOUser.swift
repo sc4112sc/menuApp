@@ -10,7 +10,7 @@ import UIKit
 
 class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     
-    var locations : [String] = ["北部","中部","南部","東部"]
+    var locations : [String] = ["🌃  北部","🏙  中部","🌆  南部","🌄  東部"]
     var myTile=""
     
 
@@ -68,15 +68,15 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
         
         if locations[row]==locations[0] {
            boyName=["小明","小智","老王","志明"]
-            boyImg=[UIImage(named:"b1.jpg")!,
-                    UIImage(named:"b2.jpg")!,
-                    UIImage(named:"b3.jpg")!,
-                    UIImage(named:"b4.jpg")!]
+            boyImg=[UIImage(named:"bhead")!,
+                    UIImage(named:"bhead")!,
+                    UIImage(named:"bhead")!,
+                    UIImage(named:"bhead")!]
             
            girlName=["小美","小愛","小盈"]
-            girlImg=[UIImage(named:"g1.jpg")!,
-                     UIImage(named:"g2.jpg")!,
-                     UIImage(named:"g3.jpg")!]
+            girlImg=[UIImage(named:"ghead")!,
+                     UIImage(named:"ghead")!,
+                     UIImage(named:"ghead")!]
             
            boyPhone=["0912345678","0987654321","0944773321","0988456725"]
            girlPhone=["0954906945","0954608549","0943294023"]
@@ -89,14 +89,14 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
             print(boyName)
         }else if locations[row]==locations[1] {
             boyName=["大雄","胖虎","小夫"]
-            boyImg=[UIImage(named:"bnew5.jpg")!,
-                    UIImage(named:"b6.jpg")!,
-                    UIImage(named:"b7.jpg")!]
+            boyImg=[UIImage(named:"bhead")!,
+                    UIImage(named:"bhead")!,
+                    UIImage(named:"bhead")!]
             
             girlName=["阿娟","露露","小喬"]
-            girlImg=[UIImage(named:"g4.jpg")!,
-                     UIImage(named:"g5.jpg")!,
-                     UIImage(named:"g6.jpg")!]
+            girlImg=[UIImage(named:"ghead")!,
+                     UIImage(named:"ghead")!,
+                     UIImage(named:"ghead")!]
             
             boyPhone=["0922234128","0976558451","0999876122"]
             girlPhone=["0934565434","0912141467","0966352112"]
@@ -109,13 +109,13 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
             print(boyName)
         }else if locations[row]==locations[2] {
             boyName=["小黑","小白","小黃"]
-            boyImg=[UIImage(named:"b8.jpg")!,
-                    UIImage(named:"b9.jpg")!,
-                    UIImage(named:"b10.jpg")!]
+            boyImg=[UIImage(named:"bhead")!,
+                    UIImage(named:"bhead")!,
+                    UIImage(named:"bhead")!]
             
             girlName=["大喬","小萱"]
-            girlImg=[UIImage(named:"g7.jpg")!,
-                     UIImage(named:"g8.jpg")!]
+            girlImg=[UIImage(named:"ghead")!,
+                     UIImage(named:"ghead")!]
             
             boyPhone=["0934565834","0956767563","0996786053"]
             girlPhone=["0954665067","0964565400"]
@@ -128,14 +128,14 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
             print(boyName)
         }else if locations[row]==locations[3] {
             boyName=["哈特利","獅子丸"]
-            boyImg=[UIImage(named:"b11.jpg")!,
-                    UIImage(named:"b12.jpeg")!]
+            boyImg=[UIImage(named:"bhead")!,
+                    UIImage(named:"bhead")!]
             
             girlName=["蓁蓁","小珊","婷婷","春嬌"]
-            girlImg=[UIImage(named:"g9.jpg")!,
-                     UIImage(named:"g10.jpg")!,
-                     UIImage(named:"g11.jpeg")!,
-                     UIImage(named:"g12.png")!]
+            girlImg=[UIImage(named:"ghead")!,
+                     UIImage(named:"ghead")!,
+                     UIImage(named:"ghead")!,
+                     UIImage(named:"ghead")!]
             
             boyPhone=["0970789465","0907905673"]
             girlPhone=["0964535841","0902935039","0953453401","0954334209"]
@@ -203,15 +203,15 @@ class SCOUser: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
         searchBtn.layer.cornerRadius = 30
         
         boyName=["小明","小智","老王","志明"]
-        boyImg=[UIImage(named:"b1.jpg")!,
-                UIImage(named:"b2.jpg")!,
-                UIImage(named:"b3.jpg")!,
-                UIImage(named:"b4.jpg")!]
+        boyImg=[UIImage(named:"bhead")!,
+                UIImage(named:"bhead")!,
+                UIImage(named:"bhead")!,
+                UIImage(named:"bhead")!]
         
         girlName=["小美","小愛","小盈"]
-        girlImg=[UIImage(named:"g1.jpg")!,
-                 UIImage(named:"g2.jpg")!,
-                 UIImage(named:"g3.jpg")!]
+        girlImg=[UIImage(named:"ghead")!,
+                 UIImage(named:"ghead")!,
+                 UIImage(named:"ghead")!]
         
         boyPhone=["0912345678","0987654321","0944773321","0988456725"]
         girlPhone=["0954906945","0954608549","0943294023"]

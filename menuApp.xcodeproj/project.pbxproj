@@ -14,7 +14,6 @@
 		8101953A20319E6800DBDAB9 /* mu4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8101953620319E6700DBDAB9 /* mu4.jpg */; };
 		8101953B20319E6800DBDAB9 /* mu3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8101953720319E6700DBDAB9 /* mu3.jpg */; };
 		8101953C20319E6800DBDAB9 /* mu2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8101953820319E6700DBDAB9 /* mu2.jpg */; };
-		8101953D20319E6800DBDAB9 /* mu1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8101953920319E6800DBDAB9 /* mu1.jpg */; };
 		8101953F20319F5000DBDAB9 /* SCOTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8101953E20319F5000DBDAB9 /* SCOTabBar.swift */; };
 		810195982031A51100DBDAB9 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 810195972031A51000DBDAB9 /* bg.jpg */; };
 		813D13B42021D6D100160E70 /* SCOCooker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D13B32021D6D100160E70 /* SCOCooker.swift */; };
@@ -61,7 +60,6 @@
 		816D5027201B698D00841168 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816D5026201B698D00841168 /* ViewController.swift */; };
 		816D502A201B698D00841168 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 816D5028201B698D00841168 /* Main.storyboard */; };
 		816D502C201B698D00841168 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 816D502B201B698D00841168 /* Assets.xcassets */; };
-		816D502F201B698D00841168 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 816D502D201B698D00841168 /* LaunchScreen.storyboard */; };
 		819046A8202DBFBB00709E8C /* aaa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819046A7202DBFBA00709E8C /* aaa.mp3 */; };
 		81AF7B152031A8FB00CE5E49 /* SCOFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AF7B142031A8FB00CE5E49 /* SCOFinal.swift */; };
 		81AF7B342031B87D00CE5E49 /* w1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81AF7B172031B87A00CE5E49 /* w1.jpg */; };
@@ -91,10 +89,26 @@
 		81AF7B582031BE9700CE5E49 /* bb5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81AF7B532031BE9600CE5E49 /* bb5.jpg */; };
 		81AF7B5A2031C0DA00CE5E49 /* w2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81AF7B592031C0DA00CE5E49 /* w2.jpg */; };
 		81B2147F2031CFD5009D42E8 /* rrr.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81B2147E2031CFD5009D42E8 /* rrr.jpg */; };
+		A1462F1C21BC0AFF00542A92 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1462F1B21BC0AFF00542A92 /* ListViewController.swift */; };
 		A1E41C3521AD9B03001D5435 /* FinalMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E41C3421AD9B03001D5435 /* FinalMenu.swift */; };
+		A1E4D34621BD6B5E009CE49A /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4D34521BD6B5E009CE49A /* StudyViewController.swift */; };
+		A1E4D34821BD72E5009CE49A /* InsideStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4D34721BD72E5009CE49A /* InsideStudyViewController.swift */; };
+		A1E4D34A21BD86DA009CE49A /* study in Resources */ = {isa = PBXBuildFile; fileRef = A1E4D34921BD86DA009CE49A /* study */; };
+		A1E4D84621BEACAC00701A80 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E4D84521BEACAC00701A80 /* Launch Screen.storyboard */; };
+		A1E4D84821BEAF8F00701A80 /* start01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1E4D84721BEAF8F00701A80 /* start01.jpg */; };
+		A1E4D84A21BEAF9C00701A80 /* menuIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1E4D84921BEAF9B00701A80 /* menuIcon.jpg */; };
 		A1E4FCD521B588B6007F4BFF /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E4FCD421B588B6007F4BFF /* CallViewController.swift */; };
+		A1E56ED221BAC2620059AE98 /* Menu4DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E56ED121BAC2620059AE98 /* Menu4DViewController.swift */; };
+		A1E5747721B82F5600E12245 /* AllBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E5747621B82F5600E12245 /* AllBookViewController.swift */; };
+		A1E5747921B85B2300E12245 /* AllCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E5747821B85B2300E12245 /* AllCheckViewController.swift */; };
+		A1E70DA621C1661100DBB58F /* Little01ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E70DA521C1661100DBB58F /* Little01ViewController.swift */; };
+		A1E70DA821C1662600DBB58F /* Little02ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E70DA721C1662600DBB58F /* Little02ViewController.swift */; };
+		A1E70DAA21C1663C00DBB58F /* Little03ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E70DA921C1663C00DBB58F /* Little03ViewController.swift */; };
+		A1E70DAC21C1665100DBB58F /* Little04ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E70DAB21C1665100DBB58F /* Little04ViewController.swift */; };
+		A1E70DAE21C16DB500DBB58F /* MyTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E70DAD21C16DB500DBB58F /* MyTabViewController.swift */; };
 		A1E7242821A5F97000E0CCDF /* SCOTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E7242721A5F96F00E0CCDF /* SCOTables.swift */; };
 		A1E762CB21A31CC200A2F10D /* menuApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1E762C921A31CC200A2F10D /* menuApp.xcdatamodeld */; };
+		A1EBD58321C3DF320049DF3E /* mu1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1EBD58221C3DF320049DF3E /* mu1.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,7 +118,6 @@
 		8101953620319E6700DBDAB9 /* mu4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mu4.jpg; sourceTree = "<group>"; };
 		8101953720319E6700DBDAB9 /* mu3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mu3.jpg; sourceTree = "<group>"; };
 		8101953820319E6700DBDAB9 /* mu2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mu2.jpg; sourceTree = "<group>"; };
-		8101953920319E6800DBDAB9 /* mu1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mu1.jpg; sourceTree = "<group>"; };
 		8101953E20319F5000DBDAB9 /* SCOTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCOTabBar.swift; sourceTree = "<group>"; };
 		810195972031A51000DBDAB9 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		813D13B32021D6D100160E70 /* SCOCooker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCOCooker.swift; sourceTree = "<group>"; };
@@ -152,7 +165,6 @@
 		816D5026201B698D00841168 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		816D5029201B698D00841168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		816D502B201B698D00841168 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		816D502E201B698D00841168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		816D5030201B698D00841168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		819046A7202DBFBA00709E8C /* aaa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = aaa.mp3; sourceTree = "<group>"; };
 		81AF7B142031A8FB00CE5E49 /* SCOFinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCOFinal.swift; sourceTree = "<group>"; };
@@ -184,10 +196,26 @@
 		81AF7B592031C0DA00CE5E49 /* w2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = w2.jpg; sourceTree = "<group>"; };
 		81B2147E2031CFD5009D42E8 /* rrr.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rrr.jpg; sourceTree = "<group>"; };
 		9C62D1713EBD7BF8A5DC7522 /* Pods-menuApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-menuApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-menuApp/Pods-menuApp.release.xcconfig"; sourceTree = "<group>"; };
+		A1462F1B21BC0AFF00542A92 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		A1E41C3421AD9B03001D5435 /* FinalMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalMenu.swift; sourceTree = "<group>"; };
+		A1E4D34521BD6B5E009CE49A /* StudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
+		A1E4D34721BD72E5009CE49A /* InsideStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideStudyViewController.swift; sourceTree = "<group>"; };
+		A1E4D34921BD86DA009CE49A /* study */ = {isa = PBXFileReference; lastKnownFileType = folder; name = study; path = "../../../食譜/study"; sourceTree = "<group>"; };
+		A1E4D84521BEACAC00701A80 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A1E4D84721BEAF8F00701A80 /* start01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = start01.jpg; path = "../../../食譜/start01.jpg"; sourceTree = "<group>"; };
+		A1E4D84921BEAF9B00701A80 /* menuIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = menuIcon.jpg; path = "../../../食譜/menuIcon.jpg"; sourceTree = "<group>"; };
 		A1E4FCD421B588B6007F4BFF /* CallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
+		A1E56ED121BAC2620059AE98 /* Menu4DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu4DViewController.swift; sourceTree = "<group>"; };
+		A1E5747621B82F5600E12245 /* AllBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBookViewController.swift; sourceTree = "<group>"; };
+		A1E5747821B85B2300E12245 /* AllCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCheckViewController.swift; sourceTree = "<group>"; };
+		A1E70DA521C1661100DBB58F /* Little01ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Little01ViewController.swift; sourceTree = "<group>"; };
+		A1E70DA721C1662600DBB58F /* Little02ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Little02ViewController.swift; sourceTree = "<group>"; };
+		A1E70DA921C1663C00DBB58F /* Little03ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Little03ViewController.swift; sourceTree = "<group>"; };
+		A1E70DAB21C1665100DBB58F /* Little04ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Little04ViewController.swift; sourceTree = "<group>"; };
+		A1E70DAD21C16DB500DBB58F /* MyTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabViewController.swift; sourceTree = "<group>"; };
 		A1E7242721A5F96F00E0CCDF /* SCOTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCOTables.swift; sourceTree = "<group>"; };
 		A1E762CA21A31CC200A2F10D /* menuApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = menuApp.xcdatamodel; sourceTree = "<group>"; };
+		A1EBD58221C3DF320049DF3E /* mu1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = mu1.jpg; path = "../../../食譜/bg/mu1.jpg"; sourceTree = "<group>"; };
 		B59407AD1E48D12B8C2F6F55 /* Pods_menuApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_menuApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D98912D461F80B493B578CD2 /* Pods-menuApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-menuApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-menuApp/Pods-menuApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -227,6 +255,7 @@
 		81639CAD2024871C00654A39 /* girlcooker */ = {
 			isa = PBXGroup;
 			children = (
+				A1E4D34921BD86DA009CE49A /* study */,
 				81639CAE2024871C00654A39 /* g1.jpg */,
 				81639CAF2024871C00654A39 /* g10.jpg */,
 				81639CB02024871C00654A39 /* g11.jpeg */,
@@ -247,6 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				81B2147E2031CFD5009D42E8 /* rrr.jpg */,
+				A1E4D84721BEAF8F00701A80 /* start01.jpg */,
+				A1E4D84921BEAF9B00701A80 /* menuIcon.jpg */,
 				815E31C1203DB20700008797 /* newbg.png */,
 				810195972031A51000DBDAB9 /* bg.jpg */,
 				8101951820319D9F00DBDAB9 /* ch1.jpg */,
@@ -254,7 +285,7 @@
 				8101951B20319DD700DBDAB9 /* ch3.jpg */,
 				81639CCA202499FB00654A39 /* ch4.jpg */,
 				81639CCB202499FB00654A39 /* ch5.jpg */,
-				8101953920319E6800DBDAB9 /* mu1.jpg */,
+				A1EBD58221C3DF320049DF3E /* mu1.jpg */,
 				8101953820319E6700DBDAB9 /* mu2.jpg */,
 				8101953720319E6700DBDAB9 /* mu3.jpg */,
 				8101953620319E6700DBDAB9 /* mu4.jpg */,
@@ -307,7 +338,6 @@
 				8158A7C5201F415D0004E78F /* SCOUser.swift */,
 				8158A7C3201F3CBC0004E78F /* SCOAllMenu.swift */,
 				816D502B201B698D00841168 /* Assets.xcassets */,
-				816D502D201B698D00841168 /* LaunchScreen.storyboard */,
 				816D5030201B698D00841168 /* Info.plist */,
 				81AF7B142031A8FB00CE5E49 /* SCOFinal.swift */,
 				815E31BD203D8C8200008797 /* CreatUser.swift */,
@@ -315,6 +345,18 @@
 				A1E762C921A31CC200A2F10D /* menuApp.xcdatamodeld */,
 				A1E41C3421AD9B03001D5435 /* FinalMenu.swift */,
 				A1E4FCD421B588B6007F4BFF /* CallViewController.swift */,
+				A1E5747621B82F5600E12245 /* AllBookViewController.swift */,
+				A1E5747821B85B2300E12245 /* AllCheckViewController.swift */,
+				A1E56ED121BAC2620059AE98 /* Menu4DViewController.swift */,
+				A1462F1B21BC0AFF00542A92 /* ListViewController.swift */,
+				A1E4D34521BD6B5E009CE49A /* StudyViewController.swift */,
+				A1E4D34721BD72E5009CE49A /* InsideStudyViewController.swift */,
+				A1E4D84521BEACAC00701A80 /* Launch Screen.storyboard */,
+				A1E70DA521C1661100DBB58F /* Little01ViewController.swift */,
+				A1E70DA721C1662600DBB58F /* Little02ViewController.swift */,
+				A1E70DA921C1663C00DBB58F /* Little03ViewController.swift */,
+				A1E70DAB21C1665100DBB58F /* Little04ViewController.swift */,
+				A1E70DAD21C16DB500DBB58F /* MyTabViewController.swift */,
 			);
 			path = menuApp;
 			sourceTree = "<group>";
@@ -452,6 +494,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E4D34A21BD86DA009CE49A /* study in Resources */,
 				81AF7B5A2031C0DA00CE5E49 /* w2.jpg in Resources */,
 				81AF7B4D2031B87D00CE5E49 /* r4.jpg in Resources */,
 				81AF7B3A2031B87D00CE5E49 /* w4.jpg in Resources */,
@@ -468,10 +511,12 @@
 				81AF7B3B2031B87D00CE5E49 /* w5.jpg in Resources */,
 				81639CBC2024871C00654A39 /* g11.jpeg in Resources */,
 				81639CC42024871C00654A39 /* g8.jpg in Resources */,
+				A1E4D84821BEAF8F00701A80 /* start01.jpg in Resources */,
 				81AF7B462031B87D00CE5E49 /* t2.jpg in Resources */,
 				81639CA92024870B00654A39 /* b6.jpg in Resources */,
 				81AF7B452031B87D00CE5E49 /* t1.jpg in Resources */,
 				81AF7B352031B87D00CE5E49 /* w10.jpg in Resources */,
+				A1E4D84621BEACAC00701A80 /* Launch Screen.storyboard in Resources */,
 				81639CA82024870B00654A39 /* b5.jpg in Resources */,
 				81639CA62024870B00654A39 /* b3.jpg in Resources */,
 				81639CA52024870B00654A39 /* b2.jpg in Resources */,
@@ -482,11 +527,11 @@
 				815E31C2203DB20700008797 /* newbg.png in Resources */,
 				81AF7B582031BE9700CE5E49 /* bb5.jpg in Resources */,
 				81AF7B482031B87D00CE5E49 /* t4.jpg in Resources */,
+				A1EBD58321C3DF320049DF3E /* mu1.jpg in Resources */,
 				81AF7B4C2031B87D00CE5E49 /* r3.jpg in Resources */,
 				81AF7B562031BE9700CE5E49 /* bb3.jpg in Resources */,
 				81B2147F2031CFD5009D42E8 /* rrr.jpg in Resources */,
 				81AF7B542031BE9700CE5E49 /* bb1.jpg in Resources */,
-				8101953D20319E6800DBDAB9 /* mu1.jpg in Resources */,
 				81639CC22024871C00654A39 /* g6.jpg in Resources */,
 				81AF7B4B2031B87D00CE5E49 /* r2.jpg in Resources */,
 				81AF7B3D2031B87D00CE5E49 /* w7.jpg in Resources */,
@@ -495,11 +540,11 @@
 				8101953C20319E6800DBDAB9 /* mu2.jpg in Resources */,
 				81639CC32024871C00654A39 /* g7.jpg in Resources */,
 				81639CBE2024871C00654A39 /* g2.jpg in Resources */,
+				A1E4D84A21BEAF9C00701A80 /* menuIcon.jpg in Resources */,
 				81639CA32024870B00654A39 /* b11.jpg in Resources */,
 				81AF7B392031B87D00CE5E49 /* w3.JPG in Resources */,
 				8101953B20319E6800DBDAB9 /* mu3.jpg in Resources */,
 				8101953A20319E6800DBDAB9 /* mu4.jpg in Resources */,
-				816D502F201B698D00841168 /* LaunchScreen.storyboard in Resources */,
 				81639CAA2024870B00654A39 /* b7.jpg in Resources */,
 				81639CD3202499FB00654A39 /* ch4.jpg in Resources */,
 				81AF7B572031BE9700CE5E49 /* bb4.jpg in Resources */,
@@ -598,19 +643,30 @@
 				814D4FB3202B10CB00F48C4B /* SCOFood4.swift in Sources */,
 				A1E4FCD521B588B6007F4BFF /* CallViewController.swift in Sources */,
 				A1E762CB21A31CC200A2F10D /* menuApp.xcdatamodeld in Sources */,
+				A1E4D34621BD6B5E009CE49A /* StudyViewController.swift in Sources */,
 				815E31BE203D8C8200008797 /* CreatUser.swift in Sources */,
 				813D13B82021EF3500160E70 /* SCOLogin.swift in Sources */,
+				A1E4D34821BD72E5009CE49A /* InsideStudyViewController.swift in Sources */,
+				A1E70DAC21C1665100DBB58F /* Little04ViewController.swift in Sources */,
 				A1E41C3521AD9B03001D5435 /* FinalMenu.swift in Sources */,
 				816D5027201B698D00841168 /* ViewController.swift in Sources */,
 				814D4FB1202B10B500F48C4B /* SCOFood3.swift in Sources */,
+				A1E56ED221BAC2620059AE98 /* Menu4DViewController.swift in Sources */,
+				A1E70DAA21C1663C00DBB58F /* Little03ViewController.swift in Sources */,
 				A1E7242821A5F97000E0CCDF /* SCOTables.swift in Sources */,
+				A1E5747921B85B2300E12245 /* AllCheckViewController.swift in Sources */,
 				8158A7C4201F3CBC0004E78F /* SCOAllMenu.swift in Sources */,
+				A1E70DA621C1661100DBB58F /* Little01ViewController.swift in Sources */,
 				81AF7B152031A8FB00CE5E49 /* SCOFinal.swift in Sources */,
 				8158A7D4201F4BBD0004E78F /* SCOFood1.swift in Sources */,
+				A1E70DA821C1662600DBB58F /* Little02ViewController.swift in Sources */,
+				A1462F1C21BC0AFF00542A92 /* ListViewController.swift in Sources */,
 				8101953F20319F5000DBDAB9 /* SCOTabBar.swift in Sources */,
 				81639CEA2024A10100654A39 /* MyChat.swift in Sources */,
 				815E31C0203D902100008797 /* UserLogin.swift in Sources */,
 				814D4FAF202B109400F48C4B /* SCOFood2.swift in Sources */,
+				A1E70DAE21C16DB500DBB58F /* MyTabViewController.swift in Sources */,
+				A1E5747721B82F5600E12245 /* AllBookViewController.swift in Sources */,
 				813D13B42021D6D100160E70 /* SCOCooker.swift in Sources */,
 				816D5025201B698D00841168 /* AppDelegate.swift in Sources */,
 			);
@@ -625,14 +681,6 @@
 				816D5029201B698D00841168 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		816D502D201B698D00841168 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				816D502E201B698D00841168 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

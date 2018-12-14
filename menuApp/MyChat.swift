@@ -9,9 +9,12 @@
 import UIKit
 import JSQMessagesViewController
 import Firebase
+import Photos
 
 class MyChat: JSQMessagesViewController {
 
+    var masterName = ""
+    
     private lazy var messageRef: DatabaseReference =
         Database.database().reference().child("messages")
     private var newMessageRefHandle: DatabaseHandle?
@@ -65,7 +68,7 @@ class MyChat: JSQMessagesViewController {
         
     }
     
-    
+    //送出
     override func didPressSend(_ button: UIButton!, withMessageText text:
         String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         let itemRef = messageRef.childByAutoId() // 1
@@ -76,9 +79,14 @@ class MyChat: JSQMessagesViewController {
             ]
         itemRef.setValue(messageItem) // 3
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
+        
+        
+        
         finishSendingMessage() // 5
         
         isTyping = false
+        
+       
     }
     
     
@@ -120,6 +128,7 @@ class MyChat: JSQMessagesViewController {
         } else {
         }
         cell.textView?.textColor = UIColor.black
+        
         return cell
     }
     
@@ -176,13 +185,17 @@ class MyChat: JSQMessagesViewController {
     
     private lazy var usersTypingQuery: DatabaseQuery = Database.database().reference().child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
     
+    
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
         
         // Do any additional setup after loading the view.
-        self.senderId = Auth.auth().currentUser?.uid
-        self.senderDisplayName = "TED"
+        self.senderId = CreatUser.loginId
+        self.senderDisplayName = CreatUser.loginName
         // No avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize =
             CGSize.zero
@@ -192,8 +205,7 @@ class MyChat: JSQMessagesViewController {
         observeMessages()
         
         
-        
-        
+        self.navigationItem.title = masterName
         
         
         // Do any additional setup after loading the view.
@@ -204,7 +216,7 @@ class MyChat: JSQMessagesViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
 

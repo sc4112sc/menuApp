@@ -46,7 +46,7 @@ class SCOAllMenu: UIViewController,UITableViewDataSource,UITableViewDelegate {
     var gomymu=0
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "Food1") as! SCOFood1
-       
+        let vc4 = self.storyboard?.instantiateViewController(withIdentifier: "Tables") as! SCOTables
         
         if indexPath.row==0{
             SCOAllMenu.chooseCount=1
@@ -59,6 +59,7 @@ class SCOAllMenu: UIViewController,UITableViewDataSource,UITableViewDelegate {
             show(vc, sender: self)
         }else{
             SCOAllMenu.chooseCount=4
+            show(vc4, sender: self)
         }
         
         

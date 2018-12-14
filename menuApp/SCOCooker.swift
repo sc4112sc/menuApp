@@ -193,7 +193,7 @@ class SCOCooker: UIViewController,UITableViewDataSource,UITableViewDelegate,ExCe
 
         self.navigationItem.title=titals
         
-        
+         self.navigationItem.rightBarButtonItem?.image = UIImage(named: "home1")
 //        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "scouser") as! SCOUser
 //
 //        print(vc2.boyName)
