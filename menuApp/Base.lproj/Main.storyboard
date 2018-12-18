@@ -410,7 +410,7 @@
                                 <rect key="frame" x="16" y="73" width="343" height="545"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93636125329999997" green="0.83905380959999998" blue="0.81801009179999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <mutableString key="text">請詳閱以下條款內容以保障您的權益：
+                                <string key="text">請詳閱以下條款內容以保障您的權益：
 
 當您完成註冊程序成為會員，即代表您同意遵守經由本會員條款所規範之權利義務事項。
 
@@ -466,7 +466,7 @@
 
 對於本條款所生之爭議，應以中華民國法令作為判斷準據。就本公司與會員間因服務項目所生之權利義務爭議，會員同意應先向本公司提出解決之請求，進行協商。若協商未果，雙方同意以台灣台北地方法院作為第一審管轄法院。
 
-會員知悉並同意，本公司保有不定期更新、修改與補充會員條款之權利，該等更新、修改與補充；會員同意，若上述變更內容透過服務項目向會員公告，或以其他書面方式向會員餞行通知者，即視為本條款之一部分，而與本條款具備同等效力。</mutableString>
+會員知悉並同意，本公司保有不定期更新、修改與補充會員條款之權利，該等更新、修改與補充；會員同意，若上述變更內容透過服務項目向會員公告，或以其他書面方式向會員餞行通知者，即視為本條款之一部分，而與本條款具備同等效力。</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -653,7 +653,7 @@
                                 <rect key="frame" x="16" y="73" width="343" height="545"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93636125329999997" green="0.83905380959999998" blue="0.81801009179999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <mutableString key="text">Privacy Policy
+                                <string key="text">Privacy Policy
 Effective date: December 12, 2018
 
 MenuApp ("us", "we", or "our") operates the MenuApp mobile application (hereinafter referred to as the "Service").
@@ -753,7 +753,7 @@ You are advised to review this Privacy Policy periodically for any changes. Chan
 Contact Us
 If you have any questions about this Privacy Policy, please contact us:
 
-By email: sc4112sc@gmail.com</mutableString>
+By email: sc4112sc@gmail.com</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -883,7 +883,7 @@ By email: sc4112sc@gmail.com</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bhead" translatesAutoresizingMaskIntoConstraints="NO" id="DMh-Id-ogj">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bigHead" translatesAutoresizingMaskIntoConstraints="NO" id="DMh-Id-ogj">
                                 <rect key="frame" x="102" y="84" width="170" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -2382,8 +2382,8 @@ By email: sc4112sc@gmail.com</mutableString>
         </scene>
     </scenes>
     <resources>
-        <image name="bhead" width="75" height="75"/>
-        <image name="mu1.jpg" width="618" height="412"/>
+        <image name="bigHead" width="255" height="255"/>
+        <image name="mu1.jpg" width="750" height="584"/>
         <image name="newbg.png" width="454" height="340"/>
         <image name="rrr.jpg" width="20" height="20"/>
         <image name="tab1" width="18" height="18"/>

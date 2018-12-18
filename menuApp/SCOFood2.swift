@@ -102,55 +102,6 @@ class SCOFood2: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         
         
-
-        if SCOAllMenu.chooseCount==1{
-        
-            if SCOFood2.count2>6{
-            
-                message(myTitle: "菜色超過", myMessage: "前菜必須為六道")
-            }
-        
-            if SCOFood2.count2==6{
-            
-                message2(myTitle: "菜色剛好", myMessage: "前菜剛好為六道")
-            }
-        
-        
-        }
-        
-        if SCOAllMenu.chooseCount==2{
-            
-            if SCOFood2.count2>7{
-                
-                message(myTitle: "菜色超過", myMessage: "前菜必須為七道")
-            }
-            
-            if SCOFood2.count2==7{
-                
-                message2(myTitle: "菜色剛好", myMessage: "前菜剛好為七道")
-            }
-            
-            
-        }
-        
-        
-        if SCOAllMenu.chooseCount==3{
-            
-            if SCOFood2.count2>5{
-                
-                message(myTitle: "菜色超過", myMessage: "前菜必須為五道")
-            }
-            
-            if SCOFood2.count2==5{
-                
-                message2(myTitle: "菜色剛好", myMessage: "前菜剛好為五道")
-            }
-            
-            
-        }
-        
-        
-        
         
     }
     
@@ -160,7 +111,46 @@ class SCOFood2: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "Food3") as! SCOFood3
         
-        show(vc, sender: self)
+        
+        
+        
+        
+        if SCOAllMenu.chooseCount==1{
+            
+            if SCOFood2.count2==6{
+                show(vc, sender: self)
+            }else{
+                message(myTitle: "菜色數量錯誤" , myMessage: "")
+            }
+            
+            
+            
+            
+        }
+        
+        if SCOAllMenu.chooseCount==2{
+            
+            if SCOFood2.count2==7{
+               show(vc, sender: self)
+            }else{
+                message(myTitle: "菜色數量錯誤" , myMessage: "")
+            }
+            
+            
+            
+        }
+        
+        
+        if SCOAllMenu.chooseCount==3{
+            
+            if SCOFood2.count2==5{
+                show(vc, sender: self)
+            }else{
+                message(myTitle: "菜色數量錯誤" , myMessage: "")
+            }
+            
+            
+        }
         
     }
     
@@ -207,12 +197,7 @@ class SCOFood2: UIViewController,UITableViewDelegate,UITableViewDataSource {
         present(alertController, animated: true, completion: nil)
     }
     
-    func message2(myTitle:String,myMessage:String) {
-        let alertController = UIAlertController(title: myTitle, message: myMessage, preferredStyle: .actionSheet)
-        let ok = UIAlertAction(title: "確定", style: .default, handler: nil)
-        alertController.addAction(ok)
-        present(alertController, animated: true, completion: nil)
-    }
+   
     /*
     // MARK: - Navigation
 

@@ -107,14 +107,11 @@ class SCOFood4: UIViewController,UITableViewDelegate,UITableViewDataSource,UIAle
         
         if SCOAllMenu.chooseCount==1{
             
-            if SCOFood4.count4>1{
-                
-                message(myTitle: "菜色超過", myMessage: "前菜必須為一道")
-            }
+      
             
             if SCOFood4.count4==1{
                 
-                message2(myTitle: "菜色剛好", myMessage: "前菜剛好為一道")
+                message2(myTitle: "菜色剛好", myMessage: "可前往送出菜單")
             }
             
             
@@ -122,14 +119,11 @@ class SCOFood4: UIViewController,UITableViewDelegate,UITableViewDataSource,UIAle
         
         if SCOAllMenu.chooseCount==2{
             
-            if SCOFood4.count4>2{
-                
-                message(myTitle: "菜色超過", myMessage: "前菜必須為兩道")
-            }
+ 
             
             if SCOFood4.count4==2{
                 
-                message2(myTitle: "菜色剛好", myMessage: "前菜剛好為兩道")
+                message2(myTitle: "菜色剛好", myMessage: "可前往送出菜單")
             }
             
             
@@ -138,14 +132,11 @@ class SCOFood4: UIViewController,UITableViewDelegate,UITableViewDataSource,UIAle
         
         if SCOAllMenu.chooseCount==3{
             
-            if SCOFood4.count4>1{
-                
-                message(myTitle: "菜色超過", myMessage: "前菜必須為一道")
-            }
+
             
             if SCOFood4.count4==1{
                 
-                message2(myTitle: "菜色剛好", myMessage: "前菜剛好為一道")
+                message2(myTitle: "菜色剛好", myMessage: "可前往送出菜單")
             }
             
             
@@ -168,7 +159,7 @@ class SCOFood4: UIViewController,UITableViewDelegate,UITableViewDataSource,UIAle
                 show(vc, sender: self)
                 
             }else{
-                message(myTitle: "品項數量錯誤", myMessage: "繼續選擇")
+                message(myTitle: "菜色數量錯誤", myMessage: "")
             }
             
             
@@ -180,7 +171,7 @@ class SCOFood4: UIViewController,UITableViewDelegate,UITableViewDataSource,UIAle
                 
                 show(vc, sender: self)
             }else{
-                message(myTitle: "品項數量錯誤", myMessage: "繼續選擇")
+                message(myTitle: "菜色數量錯誤", myMessage: "")
             }
             
             
@@ -192,7 +183,7 @@ class SCOFood4: UIViewController,UITableViewDelegate,UITableViewDataSource,UIAle
                 
                 show(vc, sender: self)
             }else{
-                message(myTitle: "品項數量錯誤", myMessage: "繼續選擇")
+                message(myTitle: "菜色數量錯誤", myMessage: "")
             }
             
             

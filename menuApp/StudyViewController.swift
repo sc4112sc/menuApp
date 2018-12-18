@@ -12,7 +12,7 @@ class StudyViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     var titles = ["八寶丸","佛跳牆","櫻花蝦米糕","龍蝦三明治","法式焗鮮蝦","鳳梨蝦球","鮑魚燴花菇","五福臨門大拼盤","魚翅羹","翡翠羹"]
     
-    var img1 = ["w1.jpg","r1.jpg","w2.jpg","w12.jpg","w3.JPG","w10.jpg","w9.jpeg","bb1.jpg","r3.jpg","r1,jpg"]
+    var img1 = ["w1.jpg","r1.jpg","w2.jpg","w12.jpg","w3.JPG","w10.jpg","w9.Jpeg","bb1.jpg","r3.jpg","r1.jpg"]
     var img2 = ["study01.jpg","study02.jpg","study03.jpg","study04.jpg","study05.jpg","study06.jpg","study07.jpg","study08.jpg","study09.jpg","study10.jpg"]
     @IBAction func calDone(_ sender: Any) {
         
