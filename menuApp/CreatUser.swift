@@ -105,6 +105,8 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
                 self.input1.text = ""
                 self.input2.text = ""
             }
+            
+            
         }
         
         
@@ -208,6 +210,10 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
             
             pBtn1.isHidden = false
             pBtn2.isHidden = false
+            
+            hBtn1.isEnabled = false
+            
+            hBtn1.alpha = 0.4
         }else{
             hBtn2.titleLabel?.text = "登入"
             myHead.image = UIImage(named: "bhead")

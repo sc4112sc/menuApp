@@ -209,6 +209,11 @@ class MyChat: JSQMessagesViewController {
         
         
         // Do any additional setup after loading the view.
+        
+        
+
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -216,7 +221,7 @@ class MyChat: JSQMessagesViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+
     /*
     // MARK: - Navigation
 
