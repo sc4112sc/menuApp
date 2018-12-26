@@ -228,7 +228,9 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
         super.viewDidLoad()
 
         ref = Database.database().reference()
-      
+        myHead.layer.cornerRadius = 85
+        myHead.layer.borderColor = UIColor.purple.cgColor
+        myHead.layer.borderWidth = 10
      
         // Do any additional setup after loading the view.
     }

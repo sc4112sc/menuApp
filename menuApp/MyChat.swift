@@ -11,12 +11,13 @@ import JSQMessagesViewController
 import Firebase
 import Photos
 
-class MyChat: JSQMessagesViewController {
+class MyChat: JSQMessagesViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     var masterName = ""
+    var phoneId = ""
     
     private lazy var messageRef: DatabaseReference =
-        Database.database().reference().child("messages")
+        Database.database().reference().child("\(phoneId)/messages")
     private var newMessageRefHandle: DatabaseHandle?
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage =
@@ -39,7 +40,7 @@ class MyChat: JSQMessagesViewController {
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.outgoingMessagesBubbleImage(with:
-            UIColor.jsq_messageBubbleBlue())
+            UIColor.jsq_messageBubbleGreen())
     }
     private func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
@@ -52,11 +53,12 @@ class MyChat: JSQMessagesViewController {
                                  messageBubbleImageDataForItemAt indexPath: IndexPath!) ->
         JSQMessageBubbleImageDataSource! {
             let message = messages[indexPath.item] // 1
-            if message.senderId == senderId { // 2
+            if message.senderId == senderId { // 2 查看發送者來決定訊息背景
                 return outgoingBubbleImageView
             } else { // 3
+                return incomingBubbleImageView
             }
-            return incomingBubbleImageView
+            
     }
     
     
@@ -106,10 +108,41 @@ class MyChat: JSQMessagesViewController {
                 // 5
                 
                 self.finishReceivingMessage()
-            }else{
+            }else if let id = messageData["senderId"] as String!,
+                let photoURL = messageData["photoURL"] as String! { // 1
+                // 2
+                if let mediaItem = JSQPhotoMediaItem(maskAsOutgoing: id == self.senderId) {
+                    // 3
+                    self.addPhotoMessage(withId: id, key: snapshot.key, mediaItem: mediaItem)
+                    // 4
+                    if photoURL.hasPrefix("gs://") {
+                        self.fetchImageDataAtURL(photoURL, forMediaItem: mediaItem, clearsPhotoMessageMapOnSuccessForKey: nil)
+                    }
+                }
+            }
+            
+            
+            
+            else{
             print("Error! Could not decode message data")
             }
             })
+        
+        
+        updateMessageRefHandle = messageRef.observe(.childChanged, with: { (snapshot) in
+            let key = snapshot.key
+            let messageData = snapshot.value as! Dictionary<String, String> // 1
+            
+            if let photoURL = messageData["photoURL"] as String! { // 2
+                // The photo has been updated.
+                if let mediaItem = self.photoMessageMap[key] { // 3
+                    self.fetchImageDataAtURL(photoURL, forMediaItem: mediaItem, clearsPhotoMessageMapOnSuccessForKey: key)
+                    // 4
+                }
+            }
+        })
+        
+        
     }
     
     
@@ -126,8 +159,9 @@ class MyChat: JSQMessagesViewController {
         if message.senderId == senderId {
             cell.textView?.textColor = UIColor.white
         } else {
+            cell.textView?.textColor = UIColor.black
         }
-        cell.textView?.textColor = UIColor.black
+        
         
         return cell
     }
@@ -185,16 +219,207 @@ class MyChat: JSQMessagesViewController {
     
     private lazy var usersTypingQuery: DatabaseQuery = Database.database().reference().child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
     
+    //storage
+    lazy var storageRef = Storage.storage().reference(forURL: "gs://scott1-66559.appspot.com")
+    private let imageURLNotSetKey = "NOTSET"
     
-
+    //可能需要一下時間，因此先上傳假的資料
+    func sendPhotoMessage() -> String? {
+        let itemRef = messageRef.childByAutoId()
+        
+        let messageItem = [
+            "photoURL": imageURLNotSetKey,
+            "senderId": senderId!,
+        ]
+        itemRef.setValue(messageItem)
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        finishSendingMessage()
+        return itemRef.key
+    }
     
+    func setImageURL(_ url: String, forPhotoMessageWithKey key: String){
+        let itemRef = messageRef.child(key)
+        itemRef.updateChildValues(["photoURL" : url])
+    }
+    
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+    
+        
+        //
+        
+        let alertController = UIAlertController(title: "請選擇傳送方式", message: "", preferredStyle: .actionSheet)
+        
+        let ok1 = UIAlertAction(title: "相簿", style: .default) { (UIAlertAction) in
+            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary)){
+                
+                picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                
+            }else{
+                
+                picker.sourceType = UIImagePickerControllerSourceType.camera
+            }
+            
+            self.present(picker, animated: true, completion: nil)
+        }
+        
+        let ok2 = UIAlertAction(title: "拍照", style: .default) { (UIAlertAction) in
+            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
+                
+                picker.sourceType = UIImagePickerControllerSourceType.camera
+                
+            }else{
+                
+                picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            }
+            
+            self.present(picker, animated: true, completion: nil)
+        }
+            let ok3 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            alertController.addAction(ok1)
+            alertController.addAction(ok2)
+            alertController.addAction(ok3)
+            present(alertController, animated: true, completion: nil)
+       
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let photoReferenceUrl = info[UIImagePickerControllerReferenceURL] as? URL {
+            // Handle picking a Photo from the Photo Library
+            // 1
+            let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+            // 2
+            if let key = sendPhotoMessage() {
+                // 3
+                let imageData = UIImageJPEGRepresentation(image, 1.0)
+                // 4
+                let imagePath = Auth.auth().currentUser!.uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+                // 5
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/jpeg"
+                // 6
+                storageRef.child(imagePath).putData(imageData!, metadata: metadata, completion: { (metadata, error) in
+                    if let error = error {
+                        print("Error uploading photo: \(error)")
+                        return
+                    }
+                    // 7
+                    self.setImageURL(self.storageRef.child((metadata?.path)!).description, forPhotoMessageWithKey: key)
+                })
+                
+                
+                //                storageRef.child(imagePath).put(imageData!, metadata: metadata) { (metadata, error) in
+                //                    if let error = error {
+                //                        print("Error uploading photo: \(error)")
+                //                        return
+                //                    }
+                //                    // 7
+                //                    self.setImageURL(self.storageRef.child((metadata?.path)!).description, forPhotoMessageWithKey: key)
+                //                }
+            }
+        } else {
+            // Handle picking a Photo from the Camera - TODO
+            // 1
+            let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+            // 2
+            if let key = sendPhotoMessage() {
+                // 3
+                let imageData = UIImageJPEGRepresentation(image, 1.0)
+                // 4
+                let imagePath = Auth.auth().currentUser!.uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+                // 5
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/jpeg"
+                // 6
+                storageRef.child(imagePath).putData(imageData!, metadata: metadata, completion: { (metadata, error) in
+                    if let error = error {
+                        print("Error uploading photo: \(error)")
+                        return
+                    }
+                    // 7
+                    self.setImageURL(self.storageRef.child((metadata?.path)!).description, forPhotoMessageWithKey: key)
+                })
+                
+                
+                //                storageRef.child(imagePath).put(imageData!, metadata: metadata) { (metadata, error) in
+                //                    if let error = error {
+                //                        print("Error uploading photo: \(error)")
+                //                        return
+                //                    }
+                //                    // 7
+                //                    self.setImageURL(self.storageRef.child((metadata?.path)!).description, forPhotoMessageWithKey: key)
+                //                }
+            }
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    //顯示圖片
+    private var photoMessageMap = [String: JSQPhotoMediaItem]()
+    
+    private func addPhotoMessage(withId id: String, key: String, mediaItem: JSQPhotoMediaItem){
+        
+        if let message = JSQMessage(senderId: id, displayName: "", media: mediaItem){
+            messages.append(message)
+            
+            if (mediaItem.image == nil){
+                photoMessageMap[key] = mediaItem
+            }
+            
+            collectionView.reloadData()
+        }
+    }
+    
+    private func fetchImageDataAtURL(_ photoURL: String, forMediaItem mediaItem: JSQPhotoMediaItem, clearsPhotoMessageMapOnSuccessForKey key: String?) {
+        // 1
+        let storageRef = Storage.storage().reference(forURL: photoURL)
+        
+        // 2
+        storageRef.getData(maxSize: INT64_MAX) { (data, error) in
+            if let error = error {
+                print("Error downloading image data: \(error)")
+                return
+            }
+            
+            // 3
+            storageRef.getMetadata(completion: { (metadata, metadataErr) in
+                if let error = metadataErr {
+                    print("Error downloading metadata: \(error)")
+                    return
+                }
+                
+                // 4
+                if (metadata?.contentType == "image/gif") {
+                    //                    mediaItem.image = UIImage.gifWithData(data!)
+                } else {
+                    mediaItem.image = UIImage.init(data: data!)
+                }
+                self.collectionView.reloadData()
+                
+                // 5
+                guard key != nil else {
+                    return
+                }
+                self.photoMessageMap.removeValue(forKey: key!)
+            })
+        }
+    }
+    
+    private var updateMessageRefHandle: DatabaseHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
       
         
         // Do any additional setup after loading the view.
-        self.senderId = CreatUser.loginId
+        self.senderId = Auth.auth().currentUser?.uid
         self.senderDisplayName = CreatUser.loginName
         // No avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize =
@@ -222,6 +447,22 @@ class MyChat: JSQMessagesViewController {
     }
     
 
+    
+    
+    deinit {
+        if let refHandle = newMessageRefHandle {
+            messageRef.removeObserver(withHandle: refHandle)
+        }
+        
+        if let refHandle = updateMessageRefHandle {
+            messageRef.removeObserver(withHandle: refHandle)
+        }
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     /*
     // MARK: - Navigation
 

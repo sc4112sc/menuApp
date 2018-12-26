@@ -70,7 +70,7 @@ class SCOFood2: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if oneCell.accessoryType == UITableViewCellAccessoryType.none {
             oneCell.accessoryType = UITableViewCellAccessoryType.checkmark
             
-            SCOFood2.count2=SCOFood2.count2+1
+            SCOFood2.count2 = SCOFood2.count2 + 1
             
             SCOFood2.food2A.append((oneCell.textLabel?.text)!)
             
@@ -81,7 +81,7 @@ class SCOFood2: UIViewController,UITableViewDelegate,UITableViewDataSource {
         } else {
             oneCell.accessoryType = UITableViewCellAccessoryType.none
             
-            SCOFood2.count2=SCOFood2.count2-1
+            SCOFood2.count2 = SCOFood2.count2 - 1
             
             if let index = SCOFood2.food2A.index(of: (oneCell.textLabel?.text)!) {
                 SCOFood2.food2A.remove(at: index)

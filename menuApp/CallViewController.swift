@@ -43,6 +43,7 @@ class CallViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
              let vc = self.storyboard?.instantiateViewController(withIdentifier: "myChat") as! MyChat
             vc.masterName = nameC
+            vc.phoneId = phoneC
             show(vc, sender: self)
             
         }else{
