@@ -9,7 +9,9 @@
 import UIKit
 
 class SCOFood2: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    //不為不重複
+    var checked = [Bool]()
+    
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var titleC: UILabel!
     
@@ -37,12 +39,13 @@ class SCOFood2: UIViewController,UITableViewDelegate,UITableViewDataSource {
                            UIImage(named:"w12.jpg")!]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return arys.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell=tableView.dequeueReusableCell(withIdentifier: "Cell2")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2") as! UITableViewCell
+        
         cell.textLabel?.text=arys[indexPath.row]
         
         
@@ -52,6 +55,12 @@ class SCOFood2: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         cell.tintColor = UIColor.red
         
+        //configure you cell here.//不為不重複
+        if checked[indexPath.row] == false{
+            cell.accessoryType = .none
+        } else if checked[indexPath.row] {
+            cell.accessoryType = .checkmark
+        }
         
         
         return cell
@@ -64,36 +73,44 @@ class SCOFood2: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+       
         
-        var oneCell : UITableViewCell = tableView.cellForRow(at: indexPath)!
+         if let oneCell = tableView.cellForRow(at: indexPath as IndexPath) {
         
-        if oneCell.accessoryType == UITableViewCellAccessoryType.none {
-            oneCell.accessoryType = UITableViewCellAccessoryType.checkmark
+        if oneCell.accessoryType == .none {
+            oneCell.accessoryType = .checkmark
+            //為了不重複
+            checked[indexPath.row] = true
             
             SCOFood2.count2 = SCOFood2.count2 + 1
-            
+
             SCOFood2.food2A.append((oneCell.textLabel?.text)!)
-            
+
             SCOFood2.food2Img.append((oneCell.imageView?.image)!)
-            
+
             SCOFood2.money2A.append((oneCell.detailTextLabel?.text)!)
             
+            
         } else {
-            oneCell.accessoryType = UITableViewCellAccessoryType.none
+            oneCell.accessoryType = .none
+            //不為不重複
+            checked[indexPath.row] = false
             
             SCOFood2.count2 = SCOFood2.count2 - 1
-            
+
             if let index = SCOFood2.food2A.index(of: (oneCell.textLabel?.text)!) {
                 SCOFood2.food2A.remove(at: index)
             }
-            
+
             if let index = SCOFood2.food2Img.index(of: (oneCell.imageView?.image)!) {
                 SCOFood2.food2Img.remove(at: index)
             }
-            
+
             if let index = SCOFood2.money2A.index(of: (oneCell.detailTextLabel?.text)!) {
                 SCOFood2.money2A.remove(at: index)
             }
+            
+        }
             
         }
         //取消選取
@@ -180,6 +197,9 @@ class SCOFood2: UIViewController,UITableViewDelegate,UITableViewDataSource {
         default:
             titleC.text = "可選五項"
         }
+        
+        //不為不重複
+        checked = Array(repeating: false, count: arys.count)
         //table.contentInset = UIEdgeInsetsMake(-50, 0, 0, 0)
         // Do any additional setup after loading the view.
     }
