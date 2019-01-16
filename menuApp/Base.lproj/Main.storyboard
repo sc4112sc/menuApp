@@ -809,14 +809,17 @@ By email: sc4112sc@gmail.com</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入六位數以上密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JaD-ph-NGo">
-                                <rect key="frame" x="122" y="394" width="216" height="30"/>
+                                <rect key="frame" x="122" y="422" width="216" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="tS3-jn-s58" id="ftD-2U-Xgu"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="密碼：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMK-ob-VCt">
-                                <rect key="frame" x="36" y="394" width="71" height="30"/>
+                                <rect key="frame" x="36" y="422" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
@@ -856,35 +859,41 @@ By email: sc4112sc@gmail.com</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入信箱格式" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NHi-UK-e2R">
-                                <rect key="frame" x="122" y="337" width="216" height="30"/>
+                                <rect key="frame" x="122" y="365" width="216" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="tS3-jn-s58" id="RTS-UB-npj"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="帳號：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBU-Il-lGu">
-                                <rect key="frame" x="36" y="337" width="71" height="30"/>
+                                <rect key="frame" x="36" y="365" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="暱稱：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byw-9R-aVR">
-                                <rect key="frame" x="36" y="278" width="71" height="30"/>
+                                <rect key="frame" x="36" y="306" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDr-rJ-CUJ">
-                                <rect key="frame" x="122" y="280" width="216" height="30"/>
+                                <rect key="frame" x="122" y="308" width="216" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="tS3-jn-s58" id="r5B-V8-def"/>
+                                </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bigHead" translatesAutoresizingMaskIntoConstraints="NO" id="DMh-Id-ogj">
-                                <rect key="frame" x="102" y="84" width="170" height="170"/>
+                                <rect key="frame" x="102" y="122" width="170" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pH0-wi-AQf">
@@ -914,22 +923,35 @@ By email: sc4112sc@gmail.com</string>
                                     <action selector="calLogin:" destination="tS3-jn-s58" eventType="touchUpInside" id="kNP-D9-W8u"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyr-Iv-awN">
-                                <rect key="frame" x="32" y="84" width="62" height="30"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="olF-e2-v8x">
+                                <rect key="frame" x="0.0" y="-64" width="375" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="選擇照片"/>
-                                <connections>
-                                    <action selector="calSelect:" destination="tS3-jn-s58" eventType="touchUpInside" id="yjq-nr-Zkz"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlM-GW-9BR">
-                                <rect key="frame" x="280" y="84" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="拍攝相片"/>
-                                <connections>
-                                    <action selector="calPicture:" destination="tS3-jn-s58" eventType="touchUpInside" id="jKR-Pi-XcL"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyr-Iv-awN">
+                                        <rect key="frame" x="32" y="13" width="80" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="選擇照片">
+                                            <color key="titleColor" red="0.93636125329999997" green="0.53754697470000001" blue="0.45446748370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="calSelect:" destination="tS3-jn-s58" eventType="touchUpInside" id="yjq-nr-Zkz"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlM-GW-9BR">
+                                        <rect key="frame" x="262" y="13" width="80" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="拍攝相片">
+                                            <color key="titleColor" red="0.93636125329999997" green="0.53754697470000001" blue="0.45446748370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="calPicture:" destination="tS3-jn-s58" eventType="touchUpInside" id="jKR-Pi-XcL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93636125329999997" green="0.53754697470000001" blue="0.45446748370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.93636125329999997" green="0.83905380959999998" blue="0.81801009179999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="HI6-fE-h2U"/>
@@ -941,6 +963,7 @@ By email: sc4112sc@gmail.com</string>
                         <outlet property="input1" destination="NHi-UK-e2R" id="QVU-zC-TI7"/>
                         <outlet property="input2" destination="JaD-ph-NGo" id="Ss2-qf-Y4r"/>
                         <outlet property="myHead" destination="DMh-Id-ogj" id="Q7d-JS-cYS"/>
+                        <outlet property="myView" destination="olF-e2-v8x" id="Ccf-QB-U7K"/>
                         <outlet property="name1" destination="bDr-rJ-CUJ" id="T80-4a-jVs"/>
                         <outlet property="pBtn1" destination="rlM-GW-9BR" id="xjK-FO-v8g"/>
                         <outlet property="pBtn2" destination="Gyr-Iv-awN" id="uWa-mQ-hI2"/>

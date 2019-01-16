@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 
-class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
+class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate {
     @IBOutlet weak var input1: UITextField!
     @IBOutlet weak var input2: UITextField!
     @IBOutlet weak var name1: UITextField!
@@ -20,6 +20,7 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     
     @IBOutlet weak var pBtn1: UIButton!
     @IBOutlet weak var pBtn2: UIButton!
+    @IBOutlet weak var myView: UIView!
     
     var ref: DatabaseReference!
     static var isLogin = false
@@ -144,7 +145,10 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
                    
                     self.pBtn1.isHidden = false
                     self.pBtn2.isHidden = false
-                   
+                    UIView.animate(withDuration: 1) {
+                        self.myView.frame.origin.y = 64
+                        
+                    }
                     
                     CreatUser.loginId = user.uid
                     
@@ -191,6 +195,7 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
             
             pBtn1.isHidden = true
             pBtn2.isHidden = true
+             self.myView.frame.origin.y = -64
         }
         
 
@@ -229,8 +234,9 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
 
         ref = Database.database().reference()
         myHead.layer.cornerRadius = 85
-        myHead.layer.borderColor = UIColor.purple.cgColor
-        myHead.layer.borderWidth = 10
+        myHead.layer.borderColor = #colorLiteral(red: 0.4889183461, green: 0.3858236486, blue: 0.9835967422, alpha: 1)
+        myHead.layer.borderWidth = 8
+        
      
         // Do any additional setup after loading the view.
     }
@@ -250,6 +256,17 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == name1{
+            input1.becomeFirstResponder()
+        }else if textField == input1{
+            input2.becomeFirstResponder()
+        }else if textField == input2{
+            input2.resignFirstResponder()
+        }
+        return true
     }
     /*
     // MARK: - Navigation
