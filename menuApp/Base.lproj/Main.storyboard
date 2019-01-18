@@ -593,10 +593,11 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="問：App註冊步驟為何？" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0PM-4T-Ghs">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0PM-4T-Ghs">
                                 <rect key="frame" x="16" y="72" width="343" height="546"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93636125329999997" green="0.83905380959999998" blue="0.81801009179999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">問：App註冊步驟為何？  答：為了將用戶通知給總鋪師們，避免交易糾紛，需要您以信箱完成註冊。註冊成功後，就可直接進行訊息溝通，不必再做額外操作。請經下列步驟：（1）進入登入頁面，創建帳號。（2）輸入帳號密碼進行登入。（3）可上傳頭像以供參考。   問：如何送出訂單？   答：經客戶選擇菜色完畢後，輸入真實手機號碼以供往後訂單受理事宜，並輸入姓名與桌數以供參考。訂單送出後，等待受理期間，可以即時取消。訂單受理後，受理廚師將會主動跟您聯絡。</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
