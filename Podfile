@@ -11,6 +11,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'JSQMessagesViewController'
 pod 'Firebase/Storage'
+pod 'ImagePicker'
 
 
 end

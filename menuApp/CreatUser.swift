@@ -10,7 +10,31 @@ import UIKit
 import Firebase
 
 
+
 class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate {
+//    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+//        guard images.count > 0 else {
+//            imagePicker.galleryView.collectionView.allowsMultipleSelection = false
+//            return
+//        }
+//
+//
+//
+//
+//
+//    }
+//
+//    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+//        self.myHead.image = images[0]
+//        CreatUser.myImage = images[0]
+//        imagePicker.dismiss(animated: true, completion: nil)
+//
+//    }
+//
+//    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+//        imagePicker.dismiss(animated: true, completion: nil)
+//    }
+    
     @IBOutlet weak var input1: UITextField!
     @IBOutlet weak var input2: UITextField!
     @IBOutlet weak var name1: UITextField!
@@ -42,6 +66,12 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
             imagePicker.sourceType = .camera
             imagePicker.delegate = self
             show(imagePicker, sender: self)
+            
+//            let imagePicker = ImagePickerController()
+//            imagePicker.delegate = self
+//            imagePicker.galleryView.collectionView.allowsMultipleSelection = false
+//
+//            self.present(imagePicker, animated: true, completion: nil)
             
         }
         
@@ -146,7 +176,7 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
                     self.pBtn1.isHidden = false
                     self.pBtn2.isHidden = false
                     UIView.animate(withDuration: 1) {
-                        self.myView.frame.origin.y = 64
+                        self.myView.frame.origin.x = 0
                         
                     }
                     
@@ -195,7 +225,7 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
             
             pBtn1.isHidden = true
             pBtn2.isHidden = true
-             self.myView.frame.origin.y = -64
+             self.myView.frame.origin.x = 380
         }
         
 
@@ -237,7 +267,9 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
         myHead.layer.borderColor = #colorLiteral(red: 0.4889183461, green: 0.3858236486, blue: 0.9835967422, alpha: 1)
         myHead.layer.borderWidth = 8
         
-     
+        input1.borderStyle = .line
+        input2.borderStyle = .line
+        name1.borderStyle = .line
         // Do any additional setup after loading the view.
     }
 
