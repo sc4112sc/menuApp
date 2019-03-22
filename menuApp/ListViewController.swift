@@ -9,6 +9,8 @@
 import UIKit
 
 class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+
+    
     
     @IBOutlet weak var myT: UITableView!
     var titles = ["📋  訂單紀錄","📜  菜單介紹","📰  我的名片","📒  小小幫手"]
@@ -82,12 +84,17 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         print(CreatUser.isLogin)
+        
+
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         myT.reloadData()
     }
 
+    @objc func dismissButtonTapped(_ sender: UIButton) {
+        presentingViewController!.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

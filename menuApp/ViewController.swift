@@ -12,7 +12,7 @@ import UIKit
 
 
 
-class ViewController: UIViewController,UIPopoverPresentationControllerDelegate{
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate{
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var popoverCtrl = segue.destination.popoverPresentationController
@@ -30,11 +30,10 @@ class ViewController: UIViewController,UIPopoverPresentationControllerDelegate{
    
     
     
-    @IBAction func calPop(_ sender: Any) {
+    @IBAction func calPop(_ sender: UIButton) {
         
-
-
-
+  
+       
         
     }
     
@@ -156,6 +155,7 @@ class ViewController: UIViewController,UIPopoverPresentationControllerDelegate{
         
         self.navigationItem.leftBarButtonItem?.image = UIImage(named: "orderAll")
         
+     
     }
 
     override func didReceiveMemoryWarning() {
@@ -163,6 +163,10 @@ class ViewController: UIViewController,UIPopoverPresentationControllerDelegate{
         // Dispose of any resources that can be recreated.
     }
 
-
+    
+    
+   
+    
 }
+
 

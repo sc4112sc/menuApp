@@ -13,5 +13,10 @@ pod 'JSQMessagesViewController'
 pod 'Firebase/Storage'
 pod 'ImagePicker'
 
+pod 'Bolts'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
+
+
 
 end

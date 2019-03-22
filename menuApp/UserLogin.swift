@@ -43,12 +43,12 @@ class UserLogin: UIViewController,UITextFieldDelegate{
    
                 print("setup")
                 
-                let uid = user.uid
-                let email = user.email
+                let uid = user.user.displayName
+                let email = user.user.email
                 
                 print("uid=\(uid),email=\(String(describing: email))")
                 
-                self.ref.child("users/\(user.uid)/count").setValue(text1)
+                self.ref.child("users/\(user.user.displayName)/count").setValue(text1)
    
             }else{
                 print("nonononono")

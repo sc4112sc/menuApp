@@ -69,6 +69,8 @@ class SCOTables: UIViewController,UITextFieldDelegate {
         nameT.delegate = self
         phoneT.delegate = self
         
+        nameT.borderStyle = .line
+        phoneT.borderStyle = .line
        
         //CoreData
         

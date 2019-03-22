@@ -11,14 +11,16 @@ import JSQMessagesViewController
 import Firebase
 import Photos
 
+
 class MyChat: JSQMessagesViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     var masterName = ""
     var phoneId = ""
-    
+    //聊天室主人串
     private lazy var messageRef: DatabaseReference =
-        Database.database().reference().child("\(phoneId)/messages")
+        Database.database().reference().child("\(phoneId)/\(senderId ?? "guest")/messages")
     private var newMessageRefHandle: DatabaseHandle?
+    //訊息陣列
     var messages = [JSQMessage]()
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage =
         self.setupOutgoingBubble()
@@ -29,7 +31,10 @@ class MyChat: JSQMessagesViewController,UIImagePickerControllerDelegate,UINaviga
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!,
                                  messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+       
         return messages[indexPath.item]
+        
+        
     }
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
@@ -40,7 +45,7 @@ class MyChat: JSQMessagesViewController,UIImagePickerControllerDelegate,UINaviga
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.outgoingMessagesBubbleImage(with:
-            UIColor.jsq_messageBubbleGreen())
+            UIColor.purple)
     }
     private func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
@@ -66,6 +71,7 @@ class MyChat: JSQMessagesViewController,UIImagePickerControllerDelegate,UINaviga
         if let message = JSQMessage(senderId: id, displayName: name, text:
             text) {
              messages.append(message)
+            
         }
         
     }
@@ -463,6 +469,9 @@ class MyChat: JSQMessagesViewController,UIImagePickerControllerDelegate,UINaviga
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+    
+    
+   
     /*
     // MARK: - Navigation
 

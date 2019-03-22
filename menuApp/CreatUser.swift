@@ -8,7 +8,8 @@
 
 import UIKit
 import Firebase
-
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 
 class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate {
@@ -180,16 +181,17 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
                         
                     }
                     
-                    CreatUser.loginId = user.uid
                     
-                    let uid = user.uid
-                    let email = user.email
+                    CreatUser.loginId = user.user.uid
+                    
+                    let uid = user.user.uid
+                    let email = user.user.email
                     print("uid=\(uid),email=\(String(describing: email))")
                     
                     
                     
-                    self.ref.child("users/\(user.uid)/count").setValue(text1)
-                    self.ref.child("users/\(user.uid)/username").setValue(text3)
+                    self.ref.child("users/\(uid)/count").setValue(text1)
+                    self.ref.child("users/\(uid)/username").setValue(text3)
                     
                     self.message(myTitle: "登入成功", myMessage: "方可進行其他操作")
                     
@@ -208,24 +210,30 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
             
         }else{
             
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                print("error")
+            }
             
+            fbBtn.isHidden = false
             
             CreatUser.isLogin = false
             CreatUser.loginName = ""
-            self.hBtn1.isEnabled = true
+            hBtn1.isEnabled = true
             
-            self.hBtn1.alpha = 1.0
+            hBtn1.alpha = 1.0
             
-            self.input1.text = ""
-            self.input2.text = ""
+            input1.text = ""
+            input2.text = ""
             message(myTitle: "已成功登出", myMessage: "")
             
             sender.setTitle("登入", for: .normal)
             myHead.image = UIImage(named: "bhead")
-            
+            name1.text = ""
             pBtn1.isHidden = true
             pBtn2.isHidden = true
-             self.myView.frame.origin.x = 380
+            myView.frame.origin.x = 380
         }
         
 
@@ -242,19 +250,23 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
             
             hBtn2.titleLabel?.text = "登出"
             myHead.image = CreatUser.myImage
-            
+            name1.text = CreatUser.loginName
             pBtn1.isHidden = false
             pBtn2.isHidden = false
             
             hBtn1.isEnabled = false
             
             hBtn1.alpha = 0.4
+            
+            self.fbBtn.isHidden = true
         }else{
             hBtn2.titleLabel?.text = "登入"
             myHead.image = UIImage(named: "bhead")
             
             pBtn1.isHidden = true
             pBtn2.isHidden = true
+            
+            self.fbBtn.isHidden = false
         }
         
     }
@@ -299,6 +311,129 @@ class CreatUser: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
             input2.resignFirstResponder()
         }
         return true
+    }
+    
+    
+    //facebook
+    @IBOutlet weak var fbBtn: UIButton!
+    
+    @IBAction func facebookLogin(sender: UIButton) {
+        
+    
+        
+        let fbLoginManager = FBSDKLoginManager()
+        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let error = error {
+                print("Failed to login: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let accessToken = FBSDKAccessToken.current() else {
+                print("Failed to get access token")
+                return
+            }
+            
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            // Perform login by calling Firebase APIs
+            Auth.auth().signIn(with: credential, completion: { (user, error) in
+                if let error = error {
+                    print("Login error: \(error.localizedDescription)")
+                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(okayAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    return
+                }
+                
+                
+                // do something
+                if let user = user {
+                    print("成功登入")
+                    CreatUser.isLogin = true
+                    //抓照片
+                    self.fetchUserData()
+                    self.name1.text = user.displayName
+                    CreatUser.loginName = user.displayName!
+                    CreatUser.loginId = user.uid
+                    
+                    
+                    
+                    self.hBtn1.isEnabled = false
+                    self.hBtn1.alpha = 0.4
+                    self.hBtn2.setTitle("登出", for: .normal)
+                    self.fbBtn.isHidden = true
+                    
+                    
+                    let uid = user.uid
+                    let email = user.email
+                    print("uid=\(uid),email=\(String(describing: email))")
+                    
+                    self.ref.child("users/\(uid)/count").setValue(email)
+                    self.ref.child("users/\(uid)/username").setValue(user.displayName)
+                    
+                    
+                    
+                    
+                } else {
+                    print("登入失敗")
+                    
+                }
+                
+            })
+            
+        }
+        
+        
+ 
+        
+  }
+    
+    
+    //facebook get image
+    private func fetchUserData() {
+        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, email, name, picture.width(480).height(480)"])
+        graphRequest?.start(completionHandler: { (connection, result, error) in
+            if error != nil {
+                print("Error",error!.localizedDescription)
+            }
+            else{
+                print(result!)
+                let field = result! as? [String:Any]
+                
+                if let imageURL = ((field!["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
+                    print(imageURL)
+                    let url = URL(string: imageURL)
+//                    let data = NSData(contentsOf: url!)
+//                    let image = UIImage(data: data! as Data)
+//                    self.myHead.image = image
+//                    CreatUser.myImage = image!
+                    
+                    let config = URLSessionConfiguration.default
+                    let session = URLSession(configuration: config)
+                    let dataTask = session.dataTask(with: url!, completionHandler: { (data, response, error) in
+                        if error == nil {
+                            var image:UIImage? = nil
+                            if let data = data {
+                                image = UIImage(data: data)
+                                DispatchQueue.main.async(execute: {
+                                    self.myHead.image = image
+                                })
+                                CreatUser.myImage = image!
+                            }
+                            print("讀取成功")
+                        } else {
+                            print("讀取失敗")
+                        }
+                        
+                    })
+                    
+                    dataTask.resume()
+                    
+                }
+            }
+        })
     }
     /*
     // MARK: - Navigation
